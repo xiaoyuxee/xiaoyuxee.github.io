@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[子善]]></title>
+  <subtitle><![CDATA[假装是个程序员]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://xiaoyuxee.com/"/>
+  <updated>2016-01-10T09:42:21.000Z</updated>
+  <id>http://xiaoyuxee.com/</id>
+  
+  <author>
+    <name><![CDATA[Xiaoyu Xee]]></name>
+    <email><![CDATA[smallrain.xuxy@gmail.com]]></email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://xiaoyuxee.com/2016/01/10/Hello-World/"/>
+    <id>http://xiaoyuxee.com/2016/01/10/Hello-World/</id>
+    <published>2016-01-10T03:44:08.000Z</published>
+    <updated>2016-01-10T09:42:21.000Z</updated>
+    <content type="html"><![CDATA[<p>国际惯例：<code>Hello World</code></p>
+<p>折腾了许久，从 <a href="https://wordpress.com/" target="_blank" rel="external">wordpress</a> 到 <a href="http://jekyllrb.com/" target="_blank" rel="external">jekyll</a> ，以及国人开发的 <a href="https://www.farbox.com/" target="_blank" rel="external">farbox</a>… 待最近静下来梳理思路时问自己：<em>为什么要在这个阶段折腾，有没有必要，初衷又是什么。</em></p>
+<p>屡清楚之后选择了 <a href="https://hexo.io" target="_blank" rel="external">hexo</a>。</p>
+<a id="more"></a>
+<h2 id="u521D_u8877"><a href="#u521D_u8877" class="headerlink" title="初衷"></a>初衷</h2><ul>
+<li><p>记录生活、工作中的点点滴滴<br>其实起因是工作中的一个小需求：有个页面需要反向代理到别的团队，鉴于业务统计原因，页面中的链接必须是我们的域名，同时别人的页面还可正常访问。<br>于是就将这个<code>nginx</code>文本替换的工单提给了PE（由PE统一处理，我们没有权限… ），结果PE吭哧吭哧半天没搞定，对<code>substitutions_filter_module</code>不熟悉，最后被告知“<em>自己申请权限去改，改好了由他审批发布</em>”。</p>
+<p>本来就对<code>niginx</code>感兴趣，一直没有时间折腾，索性就折腾一把。自己看文档，拉代码，编译，安装，测试。整个过程还是还是蛮有意思的，也遇到了各种问题。之后就在想，能否将这些分析问题、解决问题的思路和方法记录一下，备案的同时也给别人某种程度上的参考。</p>
+</li>
+<li><p>适合程序员方式的记录<br>之前在本地都在使用<a href="http://www.ulyssesapp.com" target="_blank" rel="external">Ulysess</a>，一款专注于写作的软件，支持<code>Markdown</code>、<code>Dropbox</code>同步、多种文档格式的输出等。</p>
+</li>
+<li><p>可托管于Github<br>无须担心备份等问题。</p>
+</li>
+<li><p>极简<br>记录，分享。包括呈现方式，抛弃华丽的外表，不忘初心，分享内容而非炫酷的各种Blog效果。</p>
+</li>
+</ul>
+<h2 id="u6846_u67B6_u9009_u62E9"><a href="#u6846_u67B6_u9009_u62E9" class="headerlink" title="框架选择"></a>框架选择</h2><p>最后选择<a href="https://hexo.io" target="_blank" rel="external">hexo</a>的原因也很简单，其官方定义</p>
+<blockquote>
+<p>  A fast, simple &amp; powerful blog framework</p>
+</blockquote>
+<ul>
+<li><p>速度<br>基于Node.js，支持多进程，几百篇文章几秒搞定</p>
+</li>
+<li><p>简单</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一条日志</span></span><br><span class="line">hexo n <span class="string">"Hell World"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 发布</span></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>几条简单的命令就可完成全部过程。</p>
+</li>
+<li><p>易扩展<br>已经有很多成熟的插件，比如同时部署到Github和Gitcafe等</p>
+</li>
+</ul>
+<h2 id="u6A21_u677F_u9009_u62E9"><a href="#u6A21_u677F_u9009_u62E9" class="headerlink" title="模板选择"></a>模板选择</h2><p><a href="https://github.com/pagecho/maupassant" target="_blank" rel="external">maupassant</a>，简约但不简单。 官方定义：</p>
+<blockquote>
+<p>A simple template with great performance on different devices.</p>
+</blockquote>
+<p>已支持的平台：<a href="https://github.com/pagecho/maupassant/" target="_blank" rel="external">Typecho</a>, <a href="https://github.com/pagecho/mewpassant/" target="_blank" rel="external">Octopress</a>, <a href="https://github.com/pagecho/Maupassant-farbox" target="_blank" rel="external">Farbox</a>, <a href="https://github.com/iMuFeng/maupassant" target="_blank" rel="external">Wordpress</a>, <a href="https://github.com/LjxPrime/maupassant" target="_blank" rel="external">Ghost</a>, <a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="external">Hexo</a>。</p>
+<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a></li>
+<li><a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="external">大道至简——Hexo简洁主题推荐</a></li>
+<li><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT - an elegant theme for hexo</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>国际惯例：<code>Hello World</code></p>
+<p>折腾了许久，从 <a href="https://wordpress.com/">wordpress</a> 到 <a href="http://jekyllrb.com/">jekyll</a> ，以及国人开发的 <a href="https://www.farbox.com/">farbox</a>… 待最近静下来梳理思路时问自己：<em>为什么要在这个阶段折腾，有没有必要，初衷又是什么。</em></p>
+<p>屡清楚之后选择了 <a href="https://hexo.io">hexo</a>。</p>]]>
+    
+    </summary>
+    
+      <category term="生活随笔" scheme="http://xiaoyuxee.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>
