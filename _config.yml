@@ -5,15 +5,16 @@
 # Site
 title: 子善
 subtitle: 假装是个程序员
-description: 
+description: 假装是个程序员
 author: Xiaoyu Xee
+email: smallrain.xuxy@gmail.com
 language: zh-CN
 timezone:
 since: 2016
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: xiaoyuxee.com
+url: http://xiaoyuxee.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -42,7 +43,7 @@ highlight:
 	enable: true
 	line_number: true
 	auto_detect: true
-	tab_replace:
+	tab_replace: 4
 
 # Category & Tag
 default_category: uncategorized
@@ -67,6 +68,9 @@ pagination_dir: page
 plugins:
 - hexo-generator-cname
 theme: maupassant
+
+sitemap: 
+baidusitemap: 
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
