@@ -8,7 +8,7 @@ toc: true
 
 国际惯例：`Hello World`
 
-折腾了许久，从 [wordpress](https://wordpress.com/) 到 [jekyll](http://jekyllrb.com/) ，以及国人开发的 [farbox](https://www.farbox.com/)... 待最近静下来梳理思路时问自己：*为什么要在这个阶段折腾，有没有必要，初衷又是什么。*
+折腾了许久，从 [wordpress](https://wordpress.com/) 到 [jekyll](http://jekyllrb.com/) ，以及国人开发的 [farbox](https://www.farbox.com/)... 待最近静下来梳理思路时问自己：*为何折腾，有没有必要，初衷又是什么。*
 
 屡清楚之后选择了 [hexo](https://hexo.io)。
 
