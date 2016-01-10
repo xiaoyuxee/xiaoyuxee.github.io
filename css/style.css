@@ -75,7 +75,7 @@ a:focus {
       padding: 3px 20px 3px;
       line-height: 30px;
       color: #444;
-      font-size: 13px;
+      font-size: 14px;
       border: 1px solid transparent; }
       #header #nav-menu a:hover {
         border-bottom-color: #444; }
@@ -199,9 +199,11 @@ a:focus {
       .post .post-content p code {
         display: inline;
         margin: 0 5px;
-        padding: 1px 5px;
-        border: 1px solid #ccc;
-        background: #eee; }
+        padding: 2px 5px;
+        /* border: 1px solid #ccc; */
+        background: #eee;
+        border-radius: 3px;
+        color: #d14; }
       .post .post-content p a {
         color: #01579f;
         padding-bottom: 2px;
@@ -472,16 +474,14 @@ div {
   color: #999;
   margin-top: -10px;
   margin-bottom: -10px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 4px 10px;
   border: 1px solid #999;
-  border-radius: 7px;
+  border-radius: 3px;
   float: right; }
   .readmore a:hover {
-    color: #444;
-    border-color: #444; }
+    color: #fff;
+    border-color: #444;
+    background-color: #444; }
 
 /* duoshuo style*/
 #ds-thread #ds-reset {
@@ -660,6 +660,9 @@ figure.highlight {
   color: #a71d5d; }
 
 .highlight.apacheconf .code .common,
+.highlight.apacheconf .code .nomarkup,
+.highlight.apacheconf .code .attribute,
+.highlight.apacheconf .code .variable,
 .highlight.apacheconf .code .cbracket,
 .highlight.apacheconf .code .keyword {
   color: #0086b3; }
@@ -667,6 +670,7 @@ figure.highlight {
 .highlight.apacheconf .code .sqbracket {
   color: #df5000; }
 
+.highlight.apacheconf .code .section,
 .highlight.apacheconf .code .tag {
   color: #63a35c; }
 
@@ -696,12 +700,17 @@ figure.highlight {
   color: #1d3e81; }
 
 .highlight.coffeescript .code .subst,
-.highlight.coffeescript .code .regexp {
+.highlight.coffeescript .code .regexp,
+.highlight.coffeescript .code .attribute {
   color: #df5000; }
 
 .highlight.cpp .code .preprocessor,
 .highlight.c .code .preprocessor {
   color: #df5000; }
+
+.highlight.cpp .code .meta-keyword,
+.highlight.c .code .meta-keyword {
+  color: #a71d5d; }
 
 .highlight.cpp .code .title,
 .highlight.c .code .title {
@@ -724,11 +733,13 @@ figure.highlight {
 .highlight.cs .code .built_in {
   color: #0086b3; }
 
-.highlight.cs .code .xmlDocTag {
+.highlight.cs .code .xmlDocTag,
+.highlight.cs .code .doctag {
   color: #63a35c; }
 
 .highlight.css .code .at_rule,
-.highlight.css .code .important {
+.highlight.css .code .important,
+.highlight.css .code .meta {
   color: #a71d5d; }
 
 .highlight.css .code .attribute,
@@ -743,13 +754,16 @@ figure.highlight {
 
 .highlight.css .code .id,
 .highlight.css .code .class,
-.highlight.css .code .pseudo {
+.highlight.css .code .pseudo,
+.highlight.css .code .selector-pseudo {
   color: #795da3; }
 
-.highlight.css .code .tag {
+.highlight.css .code .tag,
+.highlight.css .code .selector-tag {
   color: #63a35c; }
 
-.highlight.diff .code .chunk {
+.highlight.diff .code .chunk,
+.highlight.diff .code .meta {
   color: #795da3;
   font-weight: bold; }
 
@@ -761,17 +775,22 @@ figure.highlight {
   color: #bd2c00;
   background-color: #ffecec; }
 
-.highlight.http .code .literal,
-.highlight.http .code .attribute {
+.highlight.http .code .attribute,
+.highlight.http .code .attr {
+  color: #df5000; }
+
+.highlight.http .code .literal {
   color: #0086b3; }
 
 .highlight.http .code .request {
   color: #a71d5d; }
 
-.highlight.ini .code .title {
+.highlight.ini .code .title,
+.highlight.ini .code .section {
   color: #795da3; }
 
-.highlight.ini .code .setting {
+.highlight.ini .code .setting,
+.highlight.ini .code .attr {
   color: #a71d5d; }
 
 .highlight.ini .code .value,
@@ -784,6 +803,8 @@ figure.highlight {
 .highlight.java .code .javadoc {
   color: #969896; }
 
+.highlight.java .code .meta,
+.highlight.java .code .annotation,
 .highlight.java .code .javadoctag {
   color: #a71d5d; }
 
@@ -793,6 +814,7 @@ figure.highlight {
 .highlight.java .code .params {
   color: #1d3e81; }
 
+.highlight.js .code .built_in,
 .highlight.js .code .title {
   color: #795da3; }
 
@@ -809,7 +831,6 @@ figure.highlight {
 .highlight.js .code .regexp {
   color: #df5000; }
 
-.highlight.js .code .built_in,
 .highlight.js .code .literal,
 .highlight.js .code .number {
   color: #0086b3; }
@@ -817,52 +838,61 @@ figure.highlight {
 .highlight.json .code .attribute {
   color: #df5000; }
 
-.highlight.json .code .number {
+.highlight.json .code .number,
+.highlight.json .code .literal {
   color: #0086b3; }
 
 .highlight.mak .code .constant {
   color: #333; }
 
-.highlight.mak .code .variable {
-  color: #df5000; }
-
 .highlight.mak .code .title {
   color: #795da3; }
 
-.highlight.mak .code .keyword {
+.highlight.mak .code .keyword,
+.highlight.mak .code .meta-keyword {
   color: #0086b3; }
 
 .highlight.md .code .value,
 .highlight.md .code .link_label,
 .highlight.md .code .strong,
 .highlight.md .code .emphasis,
-.highlight.md .code .blockquote {
+.highlight.md .code .blockquote,
+.highlight.md .code .quote,
+.highlight.md .code .section {
   color: #df5000; }
 
 .highlight.md .code .link_reference,
+.highlight.md .code .symbol,
 .highlight.md .code .code {
   color: #0086b3; }
 
-.highlight.md .code .link_url {
+.highlight.md .code .link_url,
+.highlight.md .code .link {
   text-decoration: underline; }
 
-.highlight.nginx .code .title {
+.highlight.nginx .code .title,
+.highlight.nginx .code .attribute {
   color: #a71d5d; }
 
-.highlight.nginx .code .built_in {
+.highlight.nginx .code .built_in,
+.highlight.nginx .code .literal {
   color: #0086b3; }
 
-.highlight.nginx .code .regexp,
-.highlight.nginx .code .number {
+.highlight.nginx .code .regexp {
   color: #df5000; }
 
 .highlight.nginx .code .variable {
   color: #333; }
 
-.highlight.objectivec .code .preprocessor {
+.highlight.objectivec .code .preprocessor,
+.highlight.objectivec .code .meta {
   color: #a71d5d; }
-  .highlight.objectivec .code .preprocessor .title {
+  .highlight.objectivec .code .preprocessor .title,
+  .highlight.objectivec .code .meta .title {
     color: #df5000; }
+
+.highlight.objectivec .code .meta-string {
+  color: #df5000; }
 
 .highlight.objectivec .code .title {
   color: #795da3; }
@@ -875,10 +905,14 @@ figure.highlight {
 .highlight.perl .code .sub {
   color: #795da3; }
 
+.highlight.perl .code .title {
+  color: #795da3; }
+
 .highlight.perl .code .regexp {
   color: #df5000; }
 
-.highlight.php .code .phpdoc {
+.highlight.php .code .phpdoc,
+.highlight.php .code .doctag {
   color: #a71d5d; }
 
 .highlight.php .code .regexp {
@@ -892,7 +926,8 @@ figure.highlight {
   color: #795da3; }
 
 .highlight.python .code .decorator,
-.highlight.python .code .title {
+.highlight.python .code .title,
+.highlight.python .code .meta {
   color: #795da3; }
 
 .highlight.python .code .number {
@@ -921,16 +956,24 @@ figure.highlight {
 .highlight.xml .value {
   color: #df5000; }
 
-.highlight.xml .attribute {
+.highlight.xml .attribute,
+.highlight.xml .attr {
   color: #795da3; }
 
-.highlight.xml .title {
+.highlight.xml .title,
+.highlight.xml .name {
   color: #63a35c; }
 
 .highlight.puppet .title {
   color: #795da3; }
 
 .highlight.puppet .function {
+  color: #0086b3; }
+
+.highlight.puppet .name {
+  color: #a71d5d; }
+
+.highlight.puppet .attr {
   color: #0086b3; }
 
 .highlight.less .tag,
@@ -948,7 +991,10 @@ figure.highlight {
 
 .highlight.less .id,
 .highlight.less .pseudo,
-.highlight.less .class {
+.highlight.less .class,
+.highlight.less .selector-id,
+.highlight.less .selector-class,
+.highlight.less .selector-tag {
   color: #795da3; }
 
 .highlight.scss .tag,
@@ -956,7 +1002,6 @@ figure.highlight {
 .highlight.scss .important {
   color: #a71d5d; }
 
-.highlight.scss .preprocessor,
 .highlight.scss .number,
 .highlight.scss .hexcolor,
 .highlight.scss .function,
@@ -971,13 +1016,21 @@ figure.highlight {
 
 .highlight.scss .id,
 .highlight.scss .pseudo,
-.highlight.scss .class {
+.highlight.scss .class,
+.highlight.scss .preprocessor,
+.highlight.scss .selector-class,
+.highlight.scss .selector-id {
   color: #795da3; }
+
+.highlight.scss .tag,
+.highlight.scss .selector-tag {
+  color: #63a35c; }
 
 .highlight.stylus .at_rule {
   color: #a71d5d; }
 
-.highlight.stylus .tag {
+.highlight.stylus .tag,
+.highlight.stylus .selector-tag {
   color: #63a35c; }
 
 .highlight.stylus .number,
@@ -989,7 +1042,10 @@ figure.highlight {
 .highlight.stylus .class,
 .highlight.stylus .id,
 .highlight.stylus .pseudo,
-.highlight.stylus .title {
+.highlight.stylus .title,
+.highlight.stylus .selector-id,
+.highlight.stylus .selector-pseudo,
+.highlight.stylus .selector-class {
   color: #795da3; }
 
 .highlight.go .typename {
@@ -1006,7 +1062,8 @@ figure.highlight {
   color: #795da3; }
 
 .highlight.swift .built_in,
-.highlight.swift .number {
+.highlight.swift .number,
+.highlight.swift .type {
   color: #0086b3; }
 
 /* icomoon icon fonts*/
