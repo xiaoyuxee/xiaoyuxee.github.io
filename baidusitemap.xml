@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-annotation/</loc>
+    <lastmod>2016-01-15T19:56:52.000Z</lastmod>
+    <data>
+        <display>
+        <title>纯Java-Code配置DispatcherServlet</title>
+        <pubTime>2016-01-15T16:08:30.000Z</pubTime>
+        
+        <tag>spring-mvc</tag>
+         
+         
+           
+             
+              <breadCrumb title="spring" url="http://xiaoyuxee.com/categories/spring/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://xiaoyuxee.com/2016/01/11/My-2015/</loc>
-    <lastmod>2016-01-12T16:14:11.000Z</lastmod>
+    <lastmod>2016-01-12T16:15:49.000Z</lastmod>
     <data>
         <display>
         <title>我的二〇一五</title>
