@@ -1,8 +1,8 @@
 ---
 title: 纯Java-Code配置DispatcherServlet
 date: 2016-01-16 00:08:30
-tags: spring-mvc
-categories: spring
+tags: Spring-MVC
+categories: Spring
 toc: true
 ---
 
@@ -160,7 +160,7 @@ public class MyWebAppInitializer implements WebApplicationInitializer {
 
 以上的demo仅为简单实现，那么Spring中又是如何设计的呢？
 
-## Spring中是如何做的
+## Spring中如何设计
 
 分析`code.5`，其实变化的、需要用户具体指定的内容有3块：
 
