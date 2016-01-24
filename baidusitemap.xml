@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://xiaoyuxee.com/2016/01/17/coding-effectively-with-eclipse-on-mac/</loc>
+    <lastmod>2016-01-24T13:14:35.000Z</lastmod>
+    <data>
+        <display>
+        <title>Mac下高效地使用Eclipse</title>
+        <pubTime>2016-01-17T11:04:43.000Z</pubTime>
+        
+        <tag>Eclipse</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/</loc>
     <lastmod>2016-01-24T08:55:53.000Z</lastmod>
     <data>
@@ -33,21 +50,6 @@
         
         <tag>JDBC</tag>
          
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://xiaoyuxee.com/2016/01/17/coding-effectively-with-eclipse/</loc>
-    <lastmod>2016-01-18T08:52:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>高效的使用Eclipse</title>
-        <pubTime>2016-01-17T11:04:43.000Z</pubTime>
-        
          
            
         </display>
