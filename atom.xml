@@ -4,7 +4,7 @@
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://xiaoyuxee.com/"/>
-  <updated>2016-01-15T19:56:52.000Z</updated>
+  <updated>2016-01-24T08:48:16.000Z</updated>
   <id>http://xiaoyuxee.com/</id>
   
   <author>
@@ -15,11 +15,93 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Java应用中的数据库访问]]></title>
+    <link href="http://xiaoyuxee.com/2016/01/24/database-access-in-java/"/>
+    <id>http://xiaoyuxee.com/2016/01/24/database-access-in-java/</id>
+    <published>2016-01-24T05:56:04.000Z</published>
+    <updated>2016-01-24T08:48:16.000Z</updated>
+    <content type="html"><![CDATA[<p>早起对数据库的访问，都是直接调用数据库厂商提供的专有API。<a href="https://zh.wikipedia.org/zh-cn/ODBC" target="_blank" rel="external">ODBC(Open Database Connectivity)</a>是微软开放服务结构（WOSA，Windows Open Service Architecture）中有关数据库的一部分，提供了Windows下统一的数据库访问方式。使用者只需要调用ODBC API，由ODBC驱动程序将调用请求转化为对特定数据库的调用请求。</p>
+<p>Java语言问世后，Sun公司与1996年推出了<a href="https://zh.wikipedia.org/zh-cn/Java%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5" target="_blank" rel="external">JDBC(Java Database Connectivity)</a>，提供了对数据库访问的统一方式。JDBC是一套标准的访问关系数据库的Java类库，同时为数据库厂商提供了一个标准的API，让厂商为自己的数据库产品提供相应的JDBC驱动程序。应用程序调用JDBC API，由JDBC驱动程序（具体数据库厂商的实现层）处理与数据库的通信，从而使应用程序与具体数据库产品解耦。</p>
+<a id="more"></a>
+<h2 id="u52A0_u8F7D_u6CE8_u518C_u6570_u636E_u5E93_u9A71_u52A8"><a href="#u52A0_u8F7D_u6CE8_u518C_u6570_u636E_u5E93_u9A71_u52A8" class="headerlink" title="加载注册数据库驱动"></a>加载注册数据库驱动</h2><h3 id="Drive_u63A5_u53E3"><a href="#Drive_u63A5_u53E3" class="headerlink" title="Drive接口"></a>Drive接口</h3><p><code>javax.sql.Driver</code>是所有JDBC驱动程序需要实现的接口。</p>
+<p>其中，<code>connect(url, info)</code>方法用于建立到数据到的连接。而在实际的应用程序中，不需要直接调用此方法，而是通过JDBC驱动程序管理器<code>DriverManager</code>注册相应的驱动程序，使用驱动管理器来建立数据库连接。</p>
+<h3 id="u52A0_u8F7D_u6CE8_u518CJDBC_u9A71_u52A8"><a href="#u52A0_u8F7D_u6CE8_u518CJDBC_u9A71_u52A8" class="headerlink" title="加载注册JDBC驱动"></a>加载注册JDBC驱动</h3><p>加载JDBC驱动通过<code>Class.forName(String className)</code>在CLASSPATH中定位、加载驱动类。</p>
+<p>注册JDBC驱动实例则是通过<code>Driver.registerDriver(Driver driver)</code>来完成。通常，不需要我们亲自去注册，因为实现了<code>Driver</code>的驱动类都包含一个静态区，调用驱动管理器的静态方法来注册自己的一个实例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Driver</span> <span class="keyword">extends</span> <span class="title">NonRegisteringDriver</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">sql</span>.<span class="title">Driver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            java.sql.DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException E) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Can't register driver!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Driver</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        <span class="comment">// Required for Class.forName().newInstance()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u5EFA_u7ACB_u5230_u6570_u636E_u5E93_u7684_u8FDE_u63A5"><a href="#u5EFA_u7ACB_u5230_u6570_u636E_u5E93_u7684_u8FDE_u63A5" class="headerlink" title="建立到数据库的连接"></a>建立到数据库的连接</h2><p>通过<code>DriverManager.getConnection(String url, String user, String password)</code>建立到数据库的连接（代理给相应的驱动程序）</p>
+<h3 id="JDBC_URL"><a href="#JDBC_URL" class="headerlink" title="JDBC URL"></a>JDBC URL</h3><p><code>jdbc:subprotocol:subname</code>：</p>
+<ul>
+<li>协议：jdbc，唯一允许的协议</li>
+<li>子协议：标识一个数据库驱动程序，如mysql、sqlserver</li>
+<li>子名称：与具体数据库驱动有关，如mysql中：jdbc:mysql://localhost:3306/database</li>
+</ul>
+<h2 id="u6570_u636E_u5E93_u8BBF_u95EE"><a href="#u6570_u636E_u5E93_u8BBF_u95EE" class="headerlink" title="数据库访问"></a>数据库访问</h2><p>数据库访问通过建立的连接的来访问，有3种方式<code>Statement</code>、<code>PreparedStatement</code>、<code>CallableStatement</code>。</p>
+<h3 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h3><p>用于执行静态的SQL语句，通过<code>Connection.createStatement()</code>来创建。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Statement</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** 执行查询语句 */</span></span><br><span class="line">    <span class="function">ResultSet <span class="title">executeQuery</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 用于执行INSERT、UPDATE、DELETE等语句 */</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">executeUpdate</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 通过`addBatch()`批量添加sql命令，然后一起执行 */</span></span><br><span class="line">    <span class="keyword">int</span>[] executeBatch() <span class="keyword">throws</span> SQLException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ResultSet"><a href="#ResultSet" class="headerlink" title="ResultSet"></a>ResultSet</h3><p><code>ResultSet</code>以<em>逻辑表格</em>封装了数据库执行结果，由数据库厂商来实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ResultSet</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** 将游标移动到下一行，如果该行有数据返回`true`，否则返回`false` */</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">next</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 通过索引（1开始）查看某列数据 **/</span></span><br><span class="line">    <span class="function">String <span class="title">getString</span><span class="params">(<span class="keyword">int</span> columnIndex)</span> <span class="keyword">throws</span> SQLException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 通过列名称查看某列数据 **/</span></span><br><span class="line">    <span class="function">String <span class="title">getString</span><span class="params">(String columnLabel)</span> <span class="keyword">throws</span> SQLException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="PreparedStatement"><a href="#PreparedStatement" class="headerlink" title="PreparedStatement"></a>PreparedStatement</h3><p>sql语句在执行以前需要预编译，包括语句分析、代码优化等。如果仅仅是参数不同的sql语句，可以使用<code>PreparedStatement</code>。</p>
+<h3 id="ResultSetMetaData"><a href="#ResultSetMetaData" class="headerlink" title="ResultSetMetaData"></a>ResultSetMetaData</h3><p>用于描述数据库表结构的元数据， <code>ResultSet.getMetaData()</code></p>
+<h2 id="u4E8B_u52A1_u5904_u7406"><a href="#u4E8B_u52A1_u5904_u7406" class="headerlink" title="事务处理"></a>事务处理</h2><ul>
+<li>脏读（dirty read）<br>一个事务对数据进行了修改，但没有提交，与此同时另外一个事务读取了被修改的数据。如若前一个事务发生回滚，那么后一个事务读取的数据也就是无效数据。</li>
+<li>不可重复读（non-repeatable read）<br>一个事务读取了一行数据，在事务结束以前另外一个事务对这行数据进行了修改，那么当前一个事务再次读取那部分数据时，得到了不同的数据。</li>
+<li>幻读（phantom read）<br>一个事务查询某条件下的数据，事务结束之前另外一个事务又插入一些满足条件的数据，那么当第一个事务再次查询时发现数据多出几行。</li>
+</ul>
+<h3 id="Connection_u4E2D_u5173_u4E8E_u4E8B_u52A1_u9694_u79BB_u7EA7_u522B_u7684_u5E38_u91CF"><a href="#Connection_u4E2D_u5173_u4E8E_u4E8B_u52A1_u9694_u79BB_u7EA7_u522B_u7684_u5E38_u91CF" class="headerlink" title="Connection中关于事务隔离级别的常量"></a><code>Connection</code>中关于事务隔离级别的常量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Connection</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** 不支持事务 */</span></span><br><span class="line">    <span class="keyword">int</span> TRANSACTION_NONE             = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 允许脏读 */</span></span><br><span class="line">    <span class="keyword">int</span> TRANSACTION_READ_UNCOMMITTED = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 不允许脏读，但允许不可重复我和幻读 */</span></span><br><span class="line">    <span class="keyword">int</span> TRANSACTION_READ_COMMITTED   = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 不允许脏读、不可重复读，但允许幻读 */</span></span><br><span class="line">    <span class="keyword">int</span> TRANSACTION_REPEATABLE_READ  = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 脏读、不可重复读、幻读均不允许 */</span></span><br><span class="line">    <span class="keyword">int</span> TRANSACTION_SERIALIZABLE     = <span class="number">8</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>mysql默认级别为：<code>TRANSACTION_READ_COMMITTED</code>, 禁止脏读、不可重复读。</p>
+<p>而事务默认为<em>自动提交</em>，可通过<code>Connection.setAutoCommit(false)</code>来重置，自行提交（commit）或回滚（rollback）。</p>
+<h2 id="JDBC_u6570_u636E_u6E90_u548C_u8FDE_u63A5_u6C60"><a href="#JDBC_u6570_u636E_u6E90_u548C_u8FDE_u63A5_u6C60" class="headerlink" title="JDBC数据源和连接池"></a>JDBC数据源和连接池</h2><p>对数据库的访问除了加载、实例化驱动程序并通过驱动程序管理器获得连接外，还可通过<code>DataSource</code>来实现（由数据库厂商实现）。</p>
+<h3 id="u4EC0_u4E48_u662F_u8FDE_u63A5_u6C60"><a href="#u4EC0_u4E48_u662F_u8FDE_u63A5_u6C60" class="headerlink" title="什么是连接池"></a>什么是连接池</h3><p>建立数据库连接的成本是很大的，并且一个数据库服务器能够同时建立的连接数是有限的。在web应用中可能同时会有成千上万个访问数据库的请求，如果为每个请求创建一个数据库连接，性能将急剧下降。为了能够<em>重复利用数据库连接</em>，提高对请求的响应时间和服务器性能，于是诞生了数据库连接池。</p>
+<p>数据库连接池预先建立了一些数据库连接，然后保存到连接池中，当有访问数据库的请求时，从池中取出一个闲置的连接对象完成对数据的访问，请求结束后将连接对象放回池中。</p>
+<p>调用物理连接的<code>close</code>方法将关闭连接，而连接池的连接的<code>close</code>方法为释放连接对象放回连接池中。</p>
+<p>大部分servlet容器都支持基于JNDI的数据库连接池的配置，如<a href="http://tomcat.apache.org/tomcat-9.0-doc/jndi-datasource-examples-howto.html" target="_blank" rel="external">Tomcat</a>，<a href="http://www.eclipse.org/jetty/documentation/current/jndi-datasource-examples.html" target="_blank" rel="external">Jetty</a>。</p>
+<h3 id="u8FDE_u63A5_u6C60_u5B9E_u73B0"><a href="#u8FDE_u63A5_u6C60_u5B9E_u73B0" class="headerlink" title="连接池实现"></a>连接池实现</h3><ul>
+<li><a href="http://commons.apache.org/proper/commons-dbcp/" target="_blank" rel="external">Apache Commons DBCP</a></li>
+<li><a href="http://sourceforge.net/projects/c3p0/" target="_blank" rel="external">c3p0</a></li>
+<li><a href="https://github.com/wwadge/bonecp" target="_blank" rel="external">bonecp</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>早起对数据库的访问，都是直接调用数据库厂商提供的专有API。<a href="https://zh.wikipedia.org/zh-cn/ODBC">ODBC(Open Database Connectivity)</a>是微软开放服务结构（WOSA，Windows Open Service Architecture）中有关数据库的一部分，提供了Windows下统一的数据库访问方式。使用者只需要调用ODBC API，由ODBC驱动程序将调用请求转化为对特定数据库的调用请求。</p>
+<p>Java语言问世后，Sun公司与1996年推出了<a href="https://zh.wikipedia.org/zh-cn/Java%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5">JDBC(Java Database Connectivity)</a>，提供了对数据库访问的统一方式。JDBC是一套标准的访问关系数据库的Java类库，同时为数据库厂商提供了一个标准的API，让厂商为自己的数据库产品提供相应的JDBC驱动程序。应用程序调用JDBC API，由JDBC驱动程序（具体数据库厂商的实现层）处理与数据库的通信，从而使应用程序与具体数据库产品解耦。</p>]]>
+    
+    </summary>
+    
+      <category term="JDBC" scheme="http://xiaoyuxee.com/tags/JDBC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[高效的使用Eclipse]]></title>
+    <link href="http://xiaoyuxee.com/2016/01/17/coding-effectively-with-eclipse/"/>
+    <id>http://xiaoyuxee.com/2016/01/17/coding-effectively-with-eclipse/</id>
+    <published>2016-01-17T11:04:43.000Z</published>
+    <updated>2016-01-18T08:52:37.000Z</updated>
+    <content type="html"><![CDATA[<blockquote><p>工欲善其事，必先利其器。</p>
+<footer><strong>孔子，论语·卫灵公</strong></footer></blockquote>
+<p><a href="http://www.eclipse.org/" target="_blank" rel="external">Eclipse</a>想必是很多同学每天接触的IDE，那么熟练使用eclipse中的快捷键，对每天coding效率的提升将会带来显著的提示。</p>
+<a id="more"></a>
+<p>`</p>
+<p><code>shift</code>+<code>command</code>+<code>R</code>：资源搜索<br><code>shift</code>+<code>command</code>+<code>R</code>：</p>
+<p><code>command</code>+<code>F11</code>：<br><code>shift</code>+<code>command</code>+<code>B</code>：设置断点</p>
+<h2 id="Launch_Shortcuts"><a href="#Launch_Shortcuts" class="headerlink" title="Launch Shortcuts"></a>Launch Shortcuts</h2><p><a href="http://blog.csdn.net/smallnest/article/details/8019" target="_blank" rel="external">1</a><br><a href="http://blog.csdn.net/jmyue/article/details/16960199" target="_blank" rel="external">2</a><br><a href="http://www.blogjava.net/action/articles/17339.html" target="_blank" rel="external">3</a><br><a href="http://www.open-open.com/bbs/view/1320934157953" target="_blank" rel="external">4</a><br><a href="http://rongmayisheng.com/post/eclipse%E6%9C%80%E6%9C%89%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86" target="_blank" rel="external">5</a><br><a href="http://bijian1013.iteye.com/blog/2044591" target="_blank" rel="external">6</a></p>
+<p><a href="http://www.codeaffine.com/2012/11/26/working-efficiently-with-junit-in-eclipse-2/" target="_blank" rel="external">Working Efficiently with JUnit in Eclipse</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote><p>工欲善其事，必先利其器。</p>
+<footer><strong>孔子，论语·卫灵公</strong></footer></blockquote>
+<p><a href="http://www.eclipse.org/">Eclipse</a>想必是很多同学每天接触的IDE，那么熟练使用eclipse中的快捷键，对每天coding效率的提升将会带来显著的提示。</p>]]>
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[纯Java-Code配置DispatcherServlet]]></title>
     <link href="http://xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-annotation/"/>
     <id>http://xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-annotation/</id>
     <published>2016-01-15T16:08:30.000Z</published>
-    <updated>2016-01-15T19:56:52.000Z</updated>
+    <updated>2016-01-24T08:42:11.000Z</updated>
     <content type="html"><![CDATA[<p>大家都知道<code>DispatcherServelt</code>是 <em>spring-mvc</em> 中的前端控制器。按照传统的方式，可以在<code>web.xml</code>中配置这个 <em>servlet</em> 。</p>
 <p>而在 <em>Servlet 3.0</em> 以后，支持通过注解配置 <em>servlet</em>、<em>listener</em>、<em>filter</em>等，同时也支持以注解方式配置<em>servlet container</em>，达到与配置<code>web.xml</code>一样的效果。</p>
 <p>这篇文章主要介绍下<em>如何在Servlet 3.0下以 Java-Code 配置Servlet Container以及Dispatcher Servlet</em>。</p>
@@ -46,7 +128,7 @@
 <p>答案是肯定的，因为Spring 3.0就支持通过注解<code>@Configuration</code>来实现以往通过XML形式配置的工作了：</p>
 <figure class="highlight java"><figcaption><span>code.5-MyWebAppInitializer.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyWebAppInitializer</span> <span class="keyword">implements</span> <span class="title">WebApplicationInitializer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStartup</span><span class="params">(ServletContext container)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Create the 'root' Spring application context</span></span><br><span class="line">        AnnotationConfigWebApplicationContext rootContext =</span><br><span class="line">        <span class="keyword">new</span> AnnotationConfigWebApplicationContext();</span><br><span class="line">        rootContext.register(AppConfig.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Manage the lifecycle of the root application context</span></span><br><span class="line">        container.addListener(<span class="keyword">new</span> ContextLoaderListener(rootContext));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Create the dispatcher servlet's Spring application context</span></span><br><span class="line">        AnnotationConfigWebApplicationContext dispatcherContext =</span><br><span class="line">        <span class="keyword">new</span> AnnotationConfigWebApplicationContext();</span><br><span class="line">        dispatcherContext.register(DispatcherConfig.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Register and map the dispatcher servlet</span></span><br><span class="line">        ServletRegistration.Dynamic dispatcher =</span><br><span class="line">        container.addServlet(<span class="string">"dispatcher"</span>, <span class="keyword">new</span> DispatcherServlet(dispatcherContext));</span><br><span class="line">        dispatcher.setLoadOnStartup(<span class="number">1</span>);</span><br><span class="line">        dispatcher.addMapping(<span class="string">"/"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <p>以上的demo仅为简单实现，那么Spring中又是如何设计的呢？</p>
-<h2 id="Spring_u4E2D_u662F_u5982_u4F55_u505A_u7684"><a href="#Spring_u4E2D_u662F_u5982_u4F55_u505A_u7684" class="headerlink" title="Spring中是如何做的"></a>Spring中是如何做的</h2><p>分析<code>code.5</code>，其实变化的、需要用户具体指定的内容有3块：</p>
+<h2 id="Spring_u4E2D_u5982_u4F55_u8BBE_u8BA1"><a href="#Spring_u4E2D_u5982_u4F55_u8BBE_u8BA1" class="headerlink" title="Spring中如何设计"></a>Spring中如何设计</h2><p>分析<code>code.5</code>，其实变化的、需要用户具体指定的内容有3块：</p>
 <ol>
 <li>rootConfig：根容器配置</li>
 <li>dispatcherConfig：dispatcher配置</li>
@@ -73,9 +155,9 @@
     
     </summary>
     
-      <category term="spring-mvc" scheme="http://xiaoyuxee.com/tags/spring-mvc/"/>
+      <category term="Spring-MVC" scheme="http://xiaoyuxee.com/tags/Spring-MVC/"/>
     
-      <category term="spring" scheme="http://xiaoyuxee.com/categories/spring/"/>
+      <category term="Spring" scheme="http://xiaoyuxee.com/categories/Spring/"/>
     
   </entry>
   
