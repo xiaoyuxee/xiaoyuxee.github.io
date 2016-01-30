@@ -4,7 +4,7 @@
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://xiaoyuxee.com/"/>
-  <updated>2016-01-24T08:48:16.000Z</updated>
+  <updated>2016-01-30T17:42:50.000Z</updated>
   <id>http://xiaoyuxee.com/</id>
   
   <author>
@@ -13,6 +13,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Wiring Beans In Spring]]></title>
+    <link href="http://xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/"/>
+    <id>http://xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/</id>
+    <published>2016-01-29T16:43:26.000Z</published>
+    <updated>2016-01-30T17:42:50.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="http://martinfowler.com/articles/injection.html" target="_blank" rel="external">控制反转和依赖注入</a>是Spring的核心功能，也是其他模块的基石。Spring容器控制着bean的生命周期，并维护其之间的依赖关系。如何在容器中装配（配置）这些bean是学习Spring的基础。</p>
+<p>本文将介绍如何在Spring4.0中进行bean的装配，及每种方式的特点。</p>
+<a id="more"></a>
+<h2 id="u81EA_u52A8_u88C5_u914D_uFF08Automatically_uFF09"><a href="#u81EA_u52A8_u88C5_u914D_uFF08Automatically_uFF09" class="headerlink" title="自动装配（Automatically）"></a>自动装配（Automatically）</h2><p><code>@ComponentScan</code>：用于指定扫描路径，将所有带有注解<code>@Component</code>的类注册到ioc容器中进行管理。也可以通过XML类配置<code>&lt;context:component-scan&gt;</code>。</p>
+<ul>
+<li><code>basePackages</code>：当没有指定扫描的包名时，默认扫描当前配置所在的包</li>
+<li><code>basePackageClasses</code>：使用<code>basePackages</code>可能会遇到一个问题：重构包名时，扫描将会失效。那么我们可以指定扫描类所在的包。有个技巧为：<em>在预想扫描的包里创建一个标记类，用于标记扫描的包</em>。</li>
+</ul>
+<p><code>@Component</code>：用于说明该类将会注册到ioc容器中。</p>
+<ul>
+<li><code>bean id</code>：当没有指定id时，id为首字母小写的类名，如：beanFactory，当类为BeanFactory时。</li>
+<li><code>@Named</code>：与<code>@Component</code>有同样的功效，它是<a href="https://jcp.org/en/jsr/detail?id=330" target="_blank" rel="external">Dependency Injection for Java</a>中的规范。<em>不建议使用</em>，因为其语义很差劲。</li>
+</ul>
+<p><code>@AutoWired</code>：告诉ioc容器，帮其自动解决（某方法）的依赖关系。</p>
+<ul>
+<li><code>使用范围</code>：适用于构造函数、以及其他任何函数。</li>
+<li><code>Inject</code>：同<code>@AutoWired</code>。</li>
+</ul>
+<h2 id="Java_u4EE3_u7801_u88C5_u914D_uFF08Java-based_uFF09"><a href="#Java_u4EE3_u7801_u88C5_u914D_uFF08Java-based_uFF09" class="headerlink" title="Java代码装配（Java-based）"></a>Java代码装配（Java-based）</h2><p>虽然自动装配非常的诱人，简介而高效，但有些场景却无法适用。比如，当依赖一些第三方的jar包时，我们没有源码，没有办法为他们添加类似于<code>@Component</code>的注解，那我们必须在配置中明确指定依赖关系。</p>
+<p><code>Configuration</code>：表示此类为配置文件，其中包含将要注册到容器中的Bean。</p>
+<p><code>Bean</code>：表示此方法将会返回一个对象，并需要将其注册到容器中进行管理。</p>
+<ul>
+<li><code>bean id</code>：默认id为<em>方法名</em>，当然也可以显式的指定：<code>name=&quot;foo&quot;</code>。</li>
+<li>依赖关系：可以通过调用通一个配置里的方法，或者构造函数解决（不在同一个配置项中时）。</li>
+</ul>
+<h2 id="XML_u6587_u4EF6_u88C5_u914D_uFF08XML_uFF09"><a href="#XML_u6587_u4EF6_u88C5_u914D_uFF08XML_uFF09" class="headerlink" title="XML文件装配（XML）"></a>XML文件装配（XML）</h2><p>XML文件配置Spring历史悠久，Spring刚面世时就是基于XML来配置bean，甚至在大多数人眼中有这样的观念：spring就是XML配置。</p>
+<h2 id="Java-based_with_xml"><a href="#Java-based_with_xml" class="headerlink" title="Java-based with xml"></a>Java-based with xml</h2><p>使用java-based配置时，可以引入别的java-based配置以及xml配置：</p>
+<ul>
+<li><code>@Import</code>：引入其他java-based配置</li>
+<li><code>@ImportResource</code>：引入xml配置</li>
+</ul>
+<p><code>注意</code>：这里的xml必须要携带完整的路径（包括包路径），<br>如：<code>@ImportResource(&quot;classpath:/com/osceola/soundsystem/cd-config.xml&quot;)</code></p>
+<h2 id="Xml_with_java-based"><a href="#Xml_with_java-based" class="headerlink" title="Xml with java-based"></a>Xml with java-based</h2><p>在使用xml配置时，同样可以引入别的xml配置和java-based配置：</p>
+<ul>
+<li><code>&lt;import resource=&quot;config.xml&quot; /&gt;</code></li>
+<li><code>&lt;bean class=&quot;Config&quot; /&gt;</code>：想配置bean一样将java-based类配置进来</li>
+</ul>
+<h2 id="u63A8_u8350"><a href="#u63A8_u8350" class="headerlink" title="推荐"></a>推荐</h2><p><code>Automatically</code> &gt; <code>Java-based</code> &gt; <code>XML</code></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><a href="http://martinfowler.com/articles/injection.html">控制反转和依赖注入</a>是Spring的核心功能，也是其他模块的基石。Spring容器控制着bean的生命周期，并维护其之间的依赖关系。如何在容器中装配（配置）这些bean是学习Spring的基础。</p>
+<p>本文将介绍如何在Spring4.0中进行bean的装配，及每种方式的特点。</p>]]>
+    
+    </summary>
+    
+      <category term="Wiring Beans" scheme="http://xiaoyuxee.com/tags/Wiring-Beans/"/>
+    
+      <category term="Spring" scheme="http://xiaoyuxee.com/categories/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Java应用中的数据库访问]]></title>
