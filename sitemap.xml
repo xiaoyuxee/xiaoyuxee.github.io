@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xiaoyuxee.com/2016/02/05/lambda-in-java8/</loc>
+    <lastmod>2016-02-05T06:04:21.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/</loc>
     <lastmod>2016-01-30T17:42:50.000Z</lastmod>
   </url>

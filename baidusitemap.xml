@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://xiaoyuxee.com/2016/02/05/lambda-in-java8/</loc>
+    <lastmod>2016-02-05T06:04:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java8中的Lambda表达式</title>
+        <pubTime>2016-02-04T16:43:08.000Z</pubTime>
+        
+        <tag>Lambda</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java-Core" url="http://xiaoyuxee.com/categories/Java-Core/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/</loc>
     <lastmod>2016-01-30T17:42:50.000Z</lastmod>
     <data>
