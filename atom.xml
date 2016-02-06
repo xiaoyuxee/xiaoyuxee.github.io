@@ -4,7 +4,7 @@
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://xiaoyuxee.com/"/>
-  <updated>2016-02-06T17:53:47.000Z</updated>
+  <updated>2016-02-06T18:11:29.000Z</updated>
   <id>http://xiaoyuxee.com/</id>
   
   <author>
@@ -16,10 +16,10 @@
   
   <entry>
     <title><![CDATA[Java8中的Stream]]></title>
-    <link href="http://xiaoyuxee.com/2016/02/05/aggregate-operation-in-java8/"/>
-    <id>http://xiaoyuxee.com/2016/02/05/aggregate-operation-in-java8/</id>
-    <published>2016-02-05T06:41:16.000Z</published>
-    <updated>2016-02-06T17:53:47.000Z</updated>
+    <link href="http://xiaoyuxee.com/2016/02/06/aggregate-operation-in-java8/"/>
+    <id>http://xiaoyuxee.com/2016/02/06/aggregate-operation-in-java8/</id>
+    <published>2016-02-06T06:41:16.000Z</published>
+    <updated>2016-02-06T18:11:29.000Z</updated>
     <content type="html"><![CDATA[<p>Java8中为集合类<code>Collections</code>引入了新的特性：流<code>Stream</code>，使得基于集合的操作更加简洁、直观。为了更好的理解<code>Stream</code>，需要对Lambda表达式和方法引用有一定的认知，参见前一篇Note：<a href="http://www.xiaoyuxee.com/2016/02/05/lambda-in-java8/" target="_blank" rel="external">Java8中的Lambda表达式</a>。</p>
 <a id="more"></a>
 <h2 id="u5F15_u5B50"><a href="#u5F15_u5B50" class="headerlink" title="引子"></a>引子</h2><p>当我们遍历一个集合并进行打印时：</p>

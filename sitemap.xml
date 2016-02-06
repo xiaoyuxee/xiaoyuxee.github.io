@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xiaoyuxee.com/2016/02/06/aggregate-operation-in-java8/</loc>
+    <lastmod>2016-02-06T18:11:29.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/</loc>
     <lastmod>2016-02-06T18:10:11.000Z</lastmod>
   </url>
@@ -9,11 +14,6 @@
   <url>
     <loc>http://xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/</loc>
     <lastmod>2016-02-06T18:10:07.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://xiaoyuxee.com/2016/02/05/aggregate-operation-in-java8/</loc>
-    <lastmod>2016-02-06T17:53:47.000Z</lastmod>
   </url>
   
   <url>
