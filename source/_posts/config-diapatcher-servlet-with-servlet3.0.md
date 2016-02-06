@@ -1,7 +1,7 @@
 ---
 title: Servlet3.0中配置DispatcherServlet
 date: 2016-01-16 00:08:30
-tags: Spring-MVC
+tags: Srping-MVC
 categories: Spring
 toc: true
 ---

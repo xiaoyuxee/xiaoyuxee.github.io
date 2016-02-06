@@ -11,10 +11,11 @@ email: smallrain.xuxy@gmail.com
 language: zh-CN
 timezone:
 since: 2016
+google_site_verification: DInbmSEq3M87XNGmLkh9SKtYQNu08x5WB1KhunGGvB4
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://xiaoyuxee.com
+url: http://www.xiaoyuxee.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -103,5 +104,5 @@ feed:
 deploy:
 	type: git
 	repo:
-		github: git@github.com:xiaoyuxee/xiaoyuxee.github.io.git,master
-		gitcafe: git@gitcafe.com:XiaoyuXee/XiaoyuXee.git,gitcafe-pages
+		github: https://github.com/xiaoyuxee/xiaoyuxee.github.io.git,master
+		gitcafe: https://gitcafe.com/XiaoyuXee/XiaoyuXee.git,gitcafe-pages

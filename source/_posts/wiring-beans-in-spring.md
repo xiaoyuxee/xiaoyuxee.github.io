@@ -1,7 +1,7 @@
 ---
 title: Wiring Beans In Spring
 date: 2016-01-30 00:43:26
-tags: Wiring Beans
+tags: Wiring-Beans
 categories: Spring
 toc: true
 ---
