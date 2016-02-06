@@ -4,25 +4,8 @@
 
     
   <url>
-    <loc>http://xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/</loc>
-    <lastmod>2016-02-06T18:09:27.000Z</lastmod>
-    <data>
-        <display>
-        <title>Servlet3.0中配置DispatcherServlet</title>
-        <pubTime>2016-01-15T16:08:30.000Z</pubTime>
-        
-        <tag>Srping-MVC</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/</loc>
-    <lastmod>2016-02-06T18:09:19.000Z</lastmod>
+    <lastmod>2016-02-06T18:10:11.000Z</lastmod>
     <data>
         <display>
         <title>Wiring Beans In Spring</title>
@@ -32,6 +15,29 @@
          
          
            
+             
+              <breadCrumb title="Spring" url="http://xiaoyuxee.com/categories/Spring/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/</loc>
+    <lastmod>2016-02-06T18:10:07.000Z</lastmod>
+    <data>
+        <display>
+        <title>Servlet3.0中配置DispatcherServlet</title>
+        <pubTime>2016-01-15T16:08:30.000Z</pubTime>
+        
+        <tag>Srping-MVC</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring" url="http://xiaoyuxee.com/categories/Spring/"/>
+          
         </display>
     </data>
     </url>
