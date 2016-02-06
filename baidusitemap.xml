@@ -4,13 +4,39 @@
 
     
   <url>
+    <loc>http://xiaoyuxee.com/2016/02/05/aggregate-operation-in-java8/</loc>
+    <lastmod>2016-02-06T17:53:47.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java8中的Stream</title>
+        <pubTime>2016-02-05T06:41:16.000Z</pubTime>
+        
+        <tag>Aggregate-Operation</tag>
+         
+        <tag>Java8</tag>
+         
+        <tag>Stream</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java-Core" url="http://xiaoyuxee.com/categories/Java-Core/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://xiaoyuxee.com/2016/02/05/lambda-in-java8/</loc>
-    <lastmod>2016-02-05T06:04:21.000Z</lastmod>
+    <lastmod>2016-02-05T06:43:06.000Z</lastmod>
     <data>
         <display>
         <title>Java8中的Lambda表达式</title>
         <pubTime>2016-02-04T16:43:08.000Z</pubTime>
         
+        <tag>Java8</tag>
+         
         <tag>Lambda</tag>
          
          
