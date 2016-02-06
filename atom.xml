@@ -3,9 +3,9 @@
   <title><![CDATA[子善]]></title>
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://xiaoyuxee.com/"/>
+  <link href="http://www.xiaoyuxee.com/"/>
   <updated>2016-02-06T18:11:29.000Z</updated>
-  <id>http://xiaoyuxee.com/</id>
+  <id>http://www.xiaoyuxee.com/</id>
   
   <author>
     <name><![CDATA[Xiaoyu Xee]]></name>
@@ -16,11 +16,11 @@
   
   <entry>
     <title><![CDATA[Java8中的Stream]]></title>
-    <link href="http://xiaoyuxee.com/2016/02/06/aggregate-operation-in-java8/"/>
-    <id>http://xiaoyuxee.com/2016/02/06/aggregate-operation-in-java8/</id>
+    <link href="http://www.xiaoyuxee.com/2016/02/06/aggregate-operation-in-java8/"/>
+    <id>http://www.xiaoyuxee.com/2016/02/06/aggregate-operation-in-java8/</id>
     <published>2016-02-06T06:41:16.000Z</published>
     <updated>2016-02-06T18:11:29.000Z</updated>
-    <content type="html"><![CDATA[<p>Java8中为集合类<code>Collections</code>引入了新的特性：流<code>Stream</code>，使得基于集合的操作更加简洁、直观。为了更好的理解<code>Stream</code>，需要对Lambda表达式和方法引用有一定的认知，参见前一篇Note：<a href="http://www.xiaoyuxee.com/2016/02/05/lambda-in-java8/" target="_blank" rel="external">Java8中的Lambda表达式</a>。</p>
+    <content type="html"><![CDATA[<p>Java8中为集合类<code>Collections</code>引入了新的特性：流<code>Stream</code>，使得基于集合的操作更加简洁、直观。为了更好的理解<code>Stream</code>，需要对Lambda表达式和方法引用有一定的认知，参见前一篇Note：<a href="http://www.xiaoyuxee.com/2016/02/05/lambda-in-java8/">Java8中的Lambda表达式</a>。</p>
 <a id="more"></a>
 <h2 id="u5F15_u5B50"><a href="#u5F15_u5B50" class="headerlink" title="引子"></a>引子</h2><p>当我们遍历一个集合并进行打印时：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Person p : persons) &#123;</span><br><span class="line">    System.out.println(p.getName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -78,20 +78,20 @@
     
     </summary>
     
-      <category term="Aggregate-Operation" scheme="http://xiaoyuxee.com/tags/Aggregate-Operation/"/>
+      <category term="Aggregate-Operation" scheme="http://www.xiaoyuxee.com/tags/Aggregate-Operation/"/>
     
-      <category term="Java8" scheme="http://xiaoyuxee.com/tags/Java8/"/>
+      <category term="Java8" scheme="http://www.xiaoyuxee.com/tags/Java8/"/>
     
-      <category term="Stream" scheme="http://xiaoyuxee.com/tags/Stream/"/>
+      <category term="Stream" scheme="http://www.xiaoyuxee.com/tags/Stream/"/>
     
-      <category term="Java-Core" scheme="http://xiaoyuxee.com/categories/Java-Core/"/>
+      <category term="Java-Core" scheme="http://www.xiaoyuxee.com/categories/Java-Core/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Java8中的Lambda表达式]]></title>
-    <link href="http://xiaoyuxee.com/2016/02/05/lambda-in-java8/"/>
-    <id>http://xiaoyuxee.com/2016/02/05/lambda-in-java8/</id>
+    <link href="http://www.xiaoyuxee.com/2016/02/05/lambda-in-java8/"/>
+    <id>http://www.xiaoyuxee.com/2016/02/05/lambda-in-java8/</id>
     <published>2016-02-04T16:43:08.000Z</published>
     <updated>2016-02-05T06:43:06.000Z</updated>
     <content type="html"><![CDATA[<p>Lambda表达式是Java8引进的新特性，用一句话概括为：<em>更紧凑的表达仅有一个方法的接口实例</em>。</p>
@@ -144,18 +144,18 @@
     
     </summary>
     
-      <category term="Java8" scheme="http://xiaoyuxee.com/tags/Java8/"/>
+      <category term="Java8" scheme="http://www.xiaoyuxee.com/tags/Java8/"/>
     
-      <category term="Lambda" scheme="http://xiaoyuxee.com/tags/Lambda/"/>
+      <category term="Lambda" scheme="http://www.xiaoyuxee.com/tags/Lambda/"/>
     
-      <category term="Java-Core" scheme="http://xiaoyuxee.com/categories/Java-Core/"/>
+      <category term="Java-Core" scheme="http://www.xiaoyuxee.com/categories/Java-Core/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Wiring Beans In Spring]]></title>
-    <link href="http://xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/"/>
-    <id>http://xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/</id>
+    <link href="http://www.xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/"/>
+    <id>http://www.xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/</id>
     <published>2016-01-29T16:43:26.000Z</published>
     <updated>2016-02-06T18:10:11.000Z</updated>
     <content type="html"><![CDATA[<p><a href="http://martinfowler.com/articles/injection.html" target="_blank" rel="external">控制反转和依赖注入</a>是Spring的核心功能，也是其他模块的基石。Spring容器控制着bean的生命周期，并维护其之间的依赖关系。如何在容器中装配（配置）这些bean是学习Spring的基础。</p>
@@ -203,16 +203,16 @@
     
     </summary>
     
-      <category term="Wiring-Beans" scheme="http://xiaoyuxee.com/tags/Wiring-Beans/"/>
+      <category term="Wiring-Beans" scheme="http://www.xiaoyuxee.com/tags/Wiring-Beans/"/>
     
-      <category term="Spring" scheme="http://xiaoyuxee.com/categories/Spring/"/>
+      <category term="Spring" scheme="http://www.xiaoyuxee.com/categories/Spring/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Java应用中的数据库访问]]></title>
-    <link href="http://xiaoyuxee.com/2016/01/24/database-access-in-java/"/>
-    <id>http://xiaoyuxee.com/2016/01/24/database-access-in-java/</id>
+    <link href="http://www.xiaoyuxee.com/2016/01/24/database-access-in-java/"/>
+    <id>http://www.xiaoyuxee.com/2016/01/24/database-access-in-java/</id>
     <published>2016-01-24T05:56:04.000Z</published>
     <updated>2016-01-24T08:48:16.000Z</updated>
     <content type="html"><![CDATA[<p>早起对数据库的访问，都是直接调用数据库厂商提供的专有API。<a href="https://zh.wikipedia.org/zh-cn/ODBC" target="_blank" rel="external">ODBC(Open Database Connectivity)</a>是微软开放服务结构（WOSA，Windows Open Service Architecture）中有关数据库的一部分，提供了Windows下统一的数据库访问方式。使用者只需要调用ODBC API，由ODBC驱动程序将调用请求转化为对特定数据库的调用请求。</p>
@@ -262,14 +262,14 @@
     
     </summary>
     
-      <category term="JDBC" scheme="http://xiaoyuxee.com/tags/JDBC/"/>
+      <category term="JDBC" scheme="http://www.xiaoyuxee.com/tags/JDBC/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Mac下高效地使用Eclipse]]></title>
-    <link href="http://xiaoyuxee.com/2016/01/17/coding-effectively-with-eclipse-on-mac/"/>
-    <id>http://xiaoyuxee.com/2016/01/17/coding-effectively-with-eclipse-on-mac/</id>
+    <link href="http://www.xiaoyuxee.com/2016/01/17/coding-effectively-with-eclipse-on-mac/"/>
+    <id>http://www.xiaoyuxee.com/2016/01/17/coding-effectively-with-eclipse-on-mac/</id>
     <published>2016-01-17T11:04:43.000Z</published>
     <updated>2016-01-24T13:14:35.000Z</updated>
     <content type="html"><![CDATA[<blockquote><p>工欲善其事，必先利其器。</p>
@@ -293,14 +293,14 @@
     
     </summary>
     
-      <category term="Eclipse" scheme="http://xiaoyuxee.com/tags/Eclipse/"/>
+      <category term="Eclipse" scheme="http://www.xiaoyuxee.com/tags/Eclipse/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Servlet3.0中配置DispatcherServlet]]></title>
-    <link href="http://xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/"/>
-    <id>http://xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/</id>
+    <link href="http://www.xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/"/>
+    <id>http://www.xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/</id>
     <published>2016-01-15T16:08:30.000Z</published>
     <updated>2016-02-06T18:10:07.000Z</updated>
     <content type="html"><![CDATA[<p>大家都知道<code>DispatcherServelt</code>是 <em>spring-mvc</em> 中的前端控制器。按照传统的方式，可以在<code>web.xml</code>中配置这个 <em>servlet</em> 。</p>
@@ -356,16 +356,16 @@
     
     </summary>
     
-      <category term="Srping-MVC" scheme="http://xiaoyuxee.com/tags/Srping-MVC/"/>
+      <category term="Srping-MVC" scheme="http://www.xiaoyuxee.com/tags/Srping-MVC/"/>
     
-      <category term="Spring" scheme="http://xiaoyuxee.com/categories/Spring/"/>
+      <category term="Spring" scheme="http://www.xiaoyuxee.com/categories/Spring/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[我的二〇一五]]></title>
-    <link href="http://xiaoyuxee.com/2016/01/11/My-2015/"/>
-    <id>http://xiaoyuxee.com/2016/01/11/My-2015/</id>
+    <link href="http://www.xiaoyuxee.com/2016/01/11/My-2015/"/>
+    <id>http://www.xiaoyuxee.com/2016/01/11/My-2015/</id>
     <published>2016-01-11T15:47:00.000Z</published>
     <updated>2016-01-12T16:15:49.000Z</updated>
     <content type="html"><![CDATA[<p>2015就这样过去了，而且是已经过去了11天。一直想着要认真制定下新年计划，然后记录下来，因为方向是什么比当下在做什么更重要。前几天却因为博客迟迟没有迁移过来而纠结年度计划记录在哪里… 现在博客基本达到了自己想要的样子，也该把年度计划给落地了。</p>
@@ -415,16 +415,16 @@
     
     </summary>
     
-      <category term="个人计划" scheme="http://xiaoyuxee.com/tags/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/"/>
+      <category term="个人计划" scheme="http://www.xiaoyuxee.com/tags/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/"/>
     
-      <category term="目标管理" scheme="http://xiaoyuxee.com/categories/%E7%9B%AE%E6%A0%87%E7%AE%A1%E7%90%86/"/>
+      <category term="目标管理" scheme="http://www.xiaoyuxee.com/categories/%E7%9B%AE%E6%A0%87%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <link href="http://xiaoyuxee.com/2016/01/10/Hello-World/"/>
-    <id>http://xiaoyuxee.com/2016/01/10/Hello-World/</id>
+    <link href="http://www.xiaoyuxee.com/2016/01/10/Hello-World/"/>
+    <id>http://www.xiaoyuxee.com/2016/01/10/Hello-World/</id>
     <published>2016-01-10T03:44:08.000Z</published>
     <updated>2016-01-10T16:25:29.000Z</updated>
     <content type="html"><![CDATA[<p>国际惯例：<code>Hello World</code></p>
@@ -474,7 +474,7 @@
     
     </summary>
     
-      <category term="生活随笔" scheme="http://xiaoyuxee.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
+      <category term="生活随笔" scheme="http://www.xiaoyuxee.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
