@@ -157,7 +157,7 @@
     <link href="http://xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/"/>
     <id>http://xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/</id>
     <published>2016-01-29T16:43:26.000Z</published>
-    <updated>2016-02-06T18:05:42.000Z</updated>
+    <updated>2016-02-06T18:09:19.000Z</updated>
     <content type="html"><![CDATA[<p><a href="http://martinfowler.com/articles/injection.html" target="_blank" rel="external">控制反转和依赖注入</a>是Spring的核心功能，也是其他模块的基石。Spring容器控制着bean的生命周期，并维护其之间的依赖关系。如何在容器中装配（配置）这些bean是学习Spring的基础。</p>
 <p>本文将介绍如何在Spring4.0中进行bean的装配，及每种方式的特点。</p>
 <a id="more"></a>
@@ -204,8 +204,6 @@
     </summary>
     
       <category term="Wiring-Beans" scheme="http://xiaoyuxee.com/tags/Wiring-Beans/"/>
-    
-      <category term="Spring" scheme="http://xiaoyuxee.com/categories/Spring/"/>
     
   </entry>
   
@@ -302,7 +300,7 @@
     <link href="http://xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/"/>
     <id>http://xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/</id>
     <published>2016-01-15T16:08:30.000Z</published>
-    <updated>2016-02-06T18:05:51.000Z</updated>
+    <updated>2016-02-06T18:09:27.000Z</updated>
     <content type="html"><![CDATA[<p>大家都知道<code>DispatcherServelt</code>是 <em>spring-mvc</em> 中的前端控制器。按照传统的方式，可以在<code>web.xml</code>中配置这个 <em>servlet</em> 。</p>
 <p>而在 <em>Servlet 3.0</em> 以后，支持通过注解配置 <em>servlet</em>、<em>listener</em>、<em>filter</em>等，同时也支持以注解方式配置<em>servlet container</em>，达到与配置<code>web.xml</code>一样的效果。</p>
 <p>这篇文章主要介绍下<em>如何在Servlet 3.0下以 Java-Code 配置Servlet Container以及Dispatcher Servlet</em>。</p>
@@ -357,8 +355,6 @@
     </summary>
     
       <category term="Srping-MVC" scheme="http://xiaoyuxee.com/tags/Srping-MVC/"/>
-    
-      <category term="Spring" scheme="http://xiaoyuxee.com/categories/Spring/"/>
     
   </entry>
   
