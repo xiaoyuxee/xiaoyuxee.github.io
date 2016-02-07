@@ -8,7 +8,7 @@ tags:
 categories: Java-Core
 ---
 
-Java8中为集合类`Collections`引入了新的特性：流`Stream`，使得基于集合的操作更加简洁、直观。为了更好的理解`Stream`，需要对Lambda表达式和方法引用有一定的认知，参见前一篇Note：[Java8中的Lambda表达式](http://www.xiaoyuxee.com/2016/02/05/lambda-in-java8/)。
+Java8中为集合类`Collection`引入了新的特性：流`Stream`，使得基于集合的操作更加简洁、直观。为了更好的理解`Stream`，需要对Lambda表达式和方法引用有一定的认知，参见前一篇Note：[Java8中的Lambda表达式](http://www.xiaoyuxee.com/2016/02/05/lambda-in-java8/)。
 
 <!-- more -->
 
