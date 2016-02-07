@@ -79,7 +79,7 @@ qiniu:
 	access_key: 2zfX3YKfimMpDdTPA97xx1zhpPiW1743Ky8776fk
 	secret_key: 2BFfFXjNI1XWLaZ-RHMpvGiH-n2vfwDfn23yaKj_
 	dirPrefix: static
-	urlPrefix: http://xiaoyuxee.qiniudn.com/static
+	urlPrefix: http://7xqspb.com1.z0.glb.clouddn.com/static
 	local_dir: static
 	update_exist: true
 	image:
