@@ -186,7 +186,9 @@ a:focus {
     line-height: 1.77;
     color: #444;
     padding-top: 20px;
-    text-align: justify; }
+    text-align: justify;
+    text-justify: distribute;
+    word-break: break-all; }
     .post .post-content h2 {
       margin: 1.4em 0 1.1em;
       border-bottom: 1px solid #eee; }
@@ -199,11 +201,10 @@ a:focus {
       .post .post-content p code {
         display: inline;
         margin: 0 5px;
-        padding: 2px 5px;
-        /* border: 1px solid #ccc; */
+        padding: 1px 5px;
+        border: 1px solid #ccc;
         background: #eee;
-        border-radius: 3px;
-        color: #d14; }
+        border-radius: 3px; }
       .post .post-content p a {
         color: #01579f;
         padding-bottom: 2px;
@@ -232,6 +233,13 @@ a:focus {
       margin: 1em 0; }
       .post .post-content ul ul, .post .post-content ol ul {
         margin: 0; }
+      .post .post-content ul code, .post .post-content ol code {
+        display: inline;
+        margin: 0 5px;
+        padding: 1px 5px;
+        border: 1px solid #ccc;
+        background: #eee;
+        border-radius: 3px; }
       .post .post-content ul a, .post .post-content ol a {
         color: #01579f;
         padding-bottom: 2px;
@@ -601,45 +609,48 @@ div {
 
 /* syntax highlight*/
 figure.highlight {
-  background: #fff;
+  background: #f7f8f8;
   margin: 10px 0;
-  border-radius: 3px;
   line-height: 1.2em;
   color: #333;
-  border: 1px solid #d9d9d9;
+  padding-top: 15px;
   overflow: hidden; }
   figure.highlight table {
-    margin: 0;
     display: block;
-    width: 100%;
-    overflow-y: hidden;
-    overflow-x: auto; }
+    width: 100%; }
   figure.highlight pre,
   figure.highlight .gutter,
   figure.highlight .code,
   figure.highlight .tag {
+    background-color: inherit;
     font-family: Menlo;
     border: none;
     padding: 0;
     margin: 0;
     cursor: text; }
+  figure.highlight.plain .gutter {
+    display: none; }
   figure.highlight figcaption {
     font-size: 13px;
-    padding: 10px 15px;
+    padding: 0 15px 20px;
     margin: 0;
-    background: #f7f7f7;
-    border-bottom: 1px solid #d9d9d9;
+    background: #f7f8f8;
     color: #999999; }
     figure.highlight figcaption a {
-      float: right; }
+      float: right;
+      color: #349ef3; }
   figure.highlight .gutter {
-    background: #fff;
-    border-right: 1px solid #d9d9d9;
-    padding: 0.3em 0.5em; }
+    background: #f7f8f8;
+    border-right: 1px solid #e6e6e6;
+    padding: 0.3em 15px; }
     figure.highlight .gutter .line {
       color: #aaaaaa; }
   figure.highlight .code {
-    padding: 0.3em 0.3em 0.3em 1em; }
+    padding: 0.3em 15px 0.3em 1em;
+    width: 100%; }
+    figure.highlight .code pre {
+      max-width: 700px;
+      overflow-x: auto; }
   figure.highlight .line {
     height: 1.2em;
     font-size: 13px; }
@@ -654,7 +665,7 @@ figure.highlight {
   color: #969896; }
 
 .highlight .string {
-  color: #df5000; }
+  color: #183691; }
 
 .highlight .keyword {
   color: #a71d5d; }
@@ -777,7 +788,7 @@ figure.highlight {
 
 .highlight.http .code .attribute,
 .highlight.http .code .attr {
-  color: #df5000; }
+  color: #183691; }
 
 .highlight.http .code .literal {
   color: #0086b3; }
@@ -836,7 +847,7 @@ figure.highlight {
   color: #0086b3; }
 
 .highlight.json .code .attribute {
-  color: #df5000; }
+  color: #183691; }
 
 .highlight.json .code .number,
 .highlight.json .code .literal {
@@ -859,7 +870,7 @@ figure.highlight {
 .highlight.md .code .blockquote,
 .highlight.md .code .quote,
 .highlight.md .code .section {
-  color: #df5000; }
+  color: #183691; }
 
 .highlight.md .code .link_reference,
 .highlight.md .code .symbol,
@@ -879,7 +890,7 @@ figure.highlight {
   color: #0086b3; }
 
 .highlight.nginx .code .regexp {
-  color: #df5000; }
+  color: #183691; }
 
 .highlight.nginx .code .variable {
   color: #333; }
@@ -892,7 +903,7 @@ figure.highlight {
     color: #df5000; }
 
 .highlight.objectivec .code .meta-string {
-  color: #df5000; }
+  color: #183691; }
 
 .highlight.objectivec .code .title {
   color: #795da3; }
@@ -954,7 +965,7 @@ figure.highlight {
   color: #333; }
 
 .highlight.xml .value {
-  color: #df5000; }
+  color: #183691; }
 
 .highlight.xml .attribute,
 .highlight.xml .attr {
@@ -1069,8 +1080,8 @@ figure.highlight {
 /* icomoon icon fonts*/
 @font-face {
   font-family: 'icomoon';
-  src: url("../fonts/icomoon.eot?bttwgt");
-  src: url("../fonts/icomoon.eot?bttwgt#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?bttwgt") format("truetype"), url("../fonts/icomoon.woff?bttwgt") format("woff"), url("../fonts/icomoon.svg?bttwgt#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?5xv1e3");
+  src: url("../fonts/icomoon.eot?5xv1e3#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?5xv1e3") format("truetype"), url("../fonts/icomoon.woff?5xv1e3") format("woff"), url("../fonts/icomoon.svg?5xv1e3#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -1085,173 +1096,29 @@ i {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-archive:before {
+.icon-home:before {
   content: "\e900"; }
 
-.icon-home:before {
+.icon-history:before {
   content: "\e901"; }
 
-.icon-camera:before {
+.icon-guestbook:before {
   content: "\e902"; }
 
-.icon-headphones:before {
+.icon-about:before {
   content: "\e903"; }
 
-.icon-music:before {
-  content: "\e904"; }
-
-.icon-play:before {
+.icon-rss:before {
   content: "\e905"; }
 
-.icon-histroy:before {
-  content: "\e906"; }
-
-.icon-file-empty:before {
-  content: "\e907"; }
-
-.icon-files-empty:before {
+.icon-previous:before {
   content: "\e908"; }
 
-.icon-category:before {
+.icon-next:before {
   content: "\e909"; }
 
-.icon-folder-open:before {
-  content: "\e90a"; }
-
-.icon-tag:before {
-  content: "\e90b"; }
-
-.icon-tags:before {
-  content: "\e90c"; }
-
-.icon-phone:before {
-  content: "\e90d"; }
-
-.icon-address-book:before {
-  content: "\e90e"; }
-
-.icon-envelop:before {
-  content: "\e90f"; }
-
-.icon-location:before {
-  content: "\e910"; }
-
-.icon-clock:before {
-  content: "\e911"; }
-
-.icon-calendar:before {
-  content: "\e912"; }
-
-.icon-pc:before {
-  content: "\e913"; }
-
-.icon-mobile:before {
-  content: "\e914"; }
-
-.icon-tablet:before {
-  content: "\e915"; }
-
-.icon-bubbles:before {
-  content: "\e916"; }
-
-.icon-about:before {
-  content: "\e917"; }
-
-.icon-search:before {
-  content: "\e918"; }
-
-.icon-cog:before {
-  content: "\e919"; }
-
-.icon-leaf:before {
-  content: "\e91a"; }
-
-.icon-link:before {
-  content: "\e91b"; }
-
-.icon-attachment:before {
-  content: "\e91c"; }
-
-.icon-eye:before {
-  content: "\e91d"; }
-
-.icon-bookmark:before {
-  content: "\e91e"; }
-
-.icon-bookmarks:before {
-  content: "\e91f"; }
-
-.icon-loop:before {
-  content: "\e920"; }
-
-.icon-circle-up:before {
-  content: "\e921"; }
-
-.icon-circle-right:before {
-  content: "\e922"; }
-
-.icon-circle-down:before {
-  content: "\e923"; }
-
-.icon-circle-left:before {
-  content: "\e924"; }
-
-.icon-google:before {
-  content: "\e925"; }
-
-.icon-google-plus:before {
-  content: "\e926"; }
-
-.icon-hangouts:before {
-  content: "\e927"; }
-
-.icon-google-drive:before {
-  content: "\e928"; }
-
-.icon-facebook:before {
-  content: "\e929"; }
-
-.icon-twitter:before {
-  content: "\e92a"; }
-
-.icon-sina-weibo:before {
-  content: "\e92b"; }
-
-.icon-rss:before {
-  content: "\e92c"; }
-
-.icon-youtube:before {
-  content: "\e92d"; }
-
-.icon-dropbox:before {
-  content: "\e92e"; }
-
-.icon-github:before {
-  content: "\e92f"; }
-
-.icon-apple:before {
-  content: "\e930"; }
-
-.icon-android:before {
-  content: "\e931"; }
-
-.icon-windows:before {
-  content: "\e932"; }
-
-.icon-linkedin:before {
-  content: "\e933"; }
-
-.icon-chrome:before {
-  content: "\e934"; }
-
-.icon-firefox:before {
-  content: "\e935"; }
-
-.icon-IE:before {
-  content: "\e936"; }
-
-.icon-safari:before {
-  content: "\e937"; }
+.icon-archive:before {
+  content: "\e904"; }
 
 /* post navigator*/
 .post-nav {
@@ -1303,7 +1170,7 @@ i {
 
 /* table*/
 table {
-  margin: auto auto 1.234em;
+  margin: auto auto 15px;
   width: 100%;
   background: transparent;
   border-collapse: collapse;
