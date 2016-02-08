@@ -201,10 +201,11 @@ a:focus {
       .post .post-content p code {
         display: inline;
         margin: 0 5px;
-        padding: 1px 5px;
+        padding: 0px 5px;
         border: 1px solid #ccc;
         background: #eee;
-        border-radius: 3px; }
+        border-radius: 3px;
+        word-break: break-word; }
       .post .post-content p a {
         color: #01579f;
         padding-bottom: 2px;
@@ -236,7 +237,7 @@ a:focus {
       .post .post-content ul code, .post .post-content ol code {
         display: inline;
         margin: 0 5px;
-        padding: 1px 5px;
+        padding: 0px 5px;
         border: 1px solid #ccc;
         background: #eee;
         border-radius: 3px; }
@@ -1161,7 +1162,8 @@ i {
   #toc .toc {
     padding: 0;
     margin: 0.5em;
-    line-height: 1.8em; }
+    line-height: 1.8em;
+    word-break: break-word; }
     #toc .toc li {
       list-style-type: none; }
   #toc .toc-child {

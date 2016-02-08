@@ -299,7 +299,7 @@
     <link href="http://www.xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/"/>
     <id>http://www.xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/</id>
     <published>2016-01-15T16:08:30.000Z</published>
-    <updated>2016-02-08T02:08:27.000Z</updated>
+    <updated>2016-02-08T02:10:11.000Z</updated>
     <content type="html"><![CDATA[<p>大家都知道<code>DispatcherServelt</code>是 <em>spring-mvc</em> 中的前端控制器。按照传统的方式，可以在<code>web.xml</code>中配置这个 <em>servlet</em> 。</p>
 <p>而在 <em>Servlet 3.0</em> 以后，支持通过注解配置 <em>servlet</em>、<em>listener</em>、<em>filter</em>等，同时也支持以注解方式配置<em>servlet container</em>，达到与配置<code>web.xml</code>一样的效果。</p>
 <p>这篇文章主要介绍下<em>如何在Servlet 3.0下以 Java-Code 配置Servlet Container以及Dispatcher Servlet</em>。</p>
