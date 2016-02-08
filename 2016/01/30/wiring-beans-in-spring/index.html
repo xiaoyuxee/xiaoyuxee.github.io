@@ -8,19 +8,19 @@
 </ul>
 <p><code>@Component</code>：用于说明该类将会注册到ioc容器中。</p>
 <ul>
-<li><code>bean id</code>：当没有指定id时，id为首字母小写的类名，如：beanFactory，当类为BeanFactory时。</li>
+<li>id：当没有指定id时，id为首字母小写的类名，如：beanFactory，当类为BeanFactory时。</li>
 <li><code>@Named</code>：与<code>@Component</code>有同样的功效，它是<a href="https://jcp.org/en/jsr/detail?id=330" target="_blank" rel="external">Dependency Injection for Java</a>中的规范。<em>不建议使用</em>，因为其语义很差劲。</li>
 </ul>
 <p><code>@AutoWired</code>：告诉ioc容器，帮其自动解决（某方法）的依赖关系。</p>
 <ul>
-<li><code>使用范围</code>：适用于构造函数、以及其他任何函数。</li>
+<li>使用范围：适用于构造函数、以及其他任何函数。</li>
 <li><code>Inject</code>：同<code>@AutoWired</code>。</li>
 </ul>
 <h2 id="Java_u4EE3_u7801_u88C5_u914D_uFF08Java-based_uFF09"><a href="#Java_u4EE3_u7801_u88C5_u914D_uFF08Java-based_uFF09" class="headerlink" title="Java代码装配（Java-based）"></a>Java代码装配（Java-based）</h2><p>虽然自动装配非常的诱人，简介而高效，但有些场景却无法适用。比如，当依赖一些第三方的jar包时，我们没有源码，没有办法为他们添加类似于<code>@Component</code>的注解，那我们必须在配置中明确指定依赖关系。</p>
 <p><code>Configuration</code>：表示此类为配置文件，其中包含将要注册到容器中的Bean。</p>
 <p><code>Bean</code>：表示此方法将会返回一个对象，并需要将其注册到容器中进行管理。</p>
 <ul>
-<li><code>bean id</code>：默认id为<em>方法名</em>，当然也可以显式的指定：<code>name=&quot;foo&quot;</code>。</li>
+<li>id：默认id为<em>方法名</em>，当然也可以显式的指定：<code>name=&quot;foo&quot;</code>。</li>
 <li>依赖关系：可以通过调用通一个配置里的方法，或者构造函数解决（不在同一个配置项中时）。</li>
 </ul>
 <h2 id="XML_u6587_u4EF6_u88C5_u914D_uFF08XML_uFF09"><a href="#XML_u6587_u4EF6_u88C5_u914D_uFF08XML_uFF09" class="headerlink" title="XML文件装配（XML）"></a>XML文件装配（XML）</h2><p>XML文件配置Spring历史悠久，Spring刚面世时就是基于XML来配置bean，甚至在大多数人眼中有这样的观念：spring就是XML配置。</p>
