@@ -21,12 +21,12 @@ toc: true
 
 `@Component`：用于说明该类将会注册到ioc容器中。
 
-* `bean id`：当没有指定id时，id为首字母小写的类名，如：beanFactory，当类为BeanFactory时。
+* id：当没有指定id时，id为首字母小写的类名，如：beanFactory，当类为BeanFactory时。
 * `@Named`：与`@Component`有同样的功效，它是[Dependency Injection for Java](https://jcp.org/en/jsr/detail?id=330)中的规范。*不建议使用*，因为其语义很差劲。
 
 `@AutoWired`：告诉ioc容器，帮其自动解决（某方法）的依赖关系。
 
-* `使用范围`：适用于构造函数、以及其他任何函数。
+* 使用范围：适用于构造函数、以及其他任何函数。
 * `Inject`：同`@AutoWired`。
 
 ## Java代码装配（Java-based）
@@ -36,7 +36,7 @@ toc: true
 `Configuration`：表示此类为配置文件，其中包含将要注册到容器中的Bean。
 
 `Bean`：表示此方法将会返回一个对象，并需要将其注册到容器中进行管理。
-* `bean id`：默认id为*方法名*，当然也可以显式的指定：`name="foo"`。
+* id：默认id为*方法名*，当然也可以显式的指定：`name="foo"`。
 * 依赖关系：可以通过调用通一个配置里的方法，或者构造函数解决（不在同一个配置项中时）。
 
 ## XML文件装配（XML）
@@ -57,8 +57,11 @@ XML文件配置Spring历史悠久，Spring刚面世时就是基于XML来配置be
 
 在使用xml配置时，同样可以引入别的xml配置和java-based配置：
 
-* `<import resource="config.xml" />`
-* `<bean class="Config" />`：想配置bean一样将java-based类配置进来
+``` xml
+<import resource="config.xml" />
+
+<bean class="Config" /> <!-- 想配置bean一样将java-based类配置进来 -->
+```
 
 ## 推荐
 

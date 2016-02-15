@@ -114,13 +114,15 @@ void invoke(Runnable r) {
 }
 ```
 
-当执行 `String s = invoke(() -> "done");` 时，调用的方法为 `invoke(Callable<T> c)，因为这个方法返回了值。所有Lambda表达式的类型为`Callable<T>`。
+当执行 `String s = invoke(() -> "done");` 时，调用的方法为 `invoke(Callable<T> c)`，因为这个方法返回了值。所有Lambda表达式的类型为`Callable<T>`。
 
 ## 本地变量的访问
 
 Lambda表达式中并不会产生一个新的局部变量，所以你不能再表达式的参数列表中包含上一次的局部变量，但是你可以在表达体中直接使用这些的变量。
 
-当然，同内部类、匿名类一样，这些被Lambda表达式使用的变量必须是`final`类型，否则编译器会提示你：`local variables referenced from a lambda expression must be final or effectively final`。
+当然，同内部类、匿名类一样，这些被Lambda表达式使用的变量必须是`final`类型，否则编译器会提示你：
+
+> local variables referenced from a lambda expression must be final or effectively final。
 
 ``` java
 public static void main(String[] args) {

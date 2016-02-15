@@ -42,7 +42,7 @@ relative_link: false
 future: true
 highlight:
 	enable: true
-	line_number: true
+	line_number: false
 	auto_detect: true
 	tab_replace: 4
 
@@ -84,7 +84,7 @@ qiniu:
 	update_exist: true
 	image:
 		folder: images
-		extend: 
+		extend: ?imageView2/2/w/600
 	js:
 		folder: js
 	css:

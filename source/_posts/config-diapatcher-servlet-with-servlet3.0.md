@@ -80,7 +80,7 @@ public class SpringServletContainerInitializer implements ServletContainerInitia
 List<WebApplicationInitializer> initializers = new LinkedList<WebApplicationInitializer>();
 
 if (webAppInitializerClasses != null) {
-    for (Class<\?> waiClass : webAppInitializerClasses) {
+    for (Class<?> waiClass : webAppInitializerClasses) {
 
         // servlet container传入的参数均为具体实现，而非接口或抽象类
         if (!waiClass.isInterface() && !Modifier.isAbstract(waiClass.getModifiers())
