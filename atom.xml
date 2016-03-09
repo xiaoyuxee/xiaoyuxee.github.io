@@ -4,7 +4,7 @@
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.xiaoyuxee.com/"/>
-  <updated>2016-02-06T19:45:54.000Z</updated>
+  <updated>2016-03-09T18:22:00.000Z</updated>
   <id>http://www.xiaoyuxee.com/</id>
   
   <author>
@@ -13,6 +13,88 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Java中的输入/输出流]]></title>
+    <link href="http://www.xiaoyuxee.com/2016/02/15/basic-IO-in-java/"/>
+    <id>http://www.xiaoyuxee.com/2016/02/15/basic-IO-in-java/</id>
+    <published>2016-02-15T02:46:17.000Z</published>
+    <updated>2016-03-09T18:22:00.000Z</updated>
+    <content type="html"><![CDATA[<p>流（Stream）是java中输入和输出经常涉及也是最简单的概念。Java中存在各种各样的流，字符流、字节流、缓存流、基本数据流、对象流等。Java持久化中谈及的序列化与反序列化同样离不开流（将整个对象写入流中，并可以从流中获取整个对象）。</p>
+<a id="more"></a>
+<h2 id="u5B57_u8282_u6D41_uFF08InputSteam_uFF09"><a href="#u5B57_u8282_u6D41_uFF08InputSteam_uFF09" class="headerlink" title="字节流（InputSteam）"></a>字节流（InputSteam）</h2><p>常见的有<code>FileInputSteam</code>，主要用于读取原生的字节流，如图片。如果想要读取关于字符的字节流可以使用<code>FileReader</code>。</p>
+<h2 id="u5B57_u7B26_u6D41_uFF08Reader_uFF09"><a href="#u5B57_u7B26_u6D41_uFF08Reader_uFF09" class="headerlink" title="字符流（Reader）"></a>字符流（Reader）</h2><h3 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a><code>Reader</code></h3><p>所有的字符流都继承于Reader，它包含一个同步锁<code>lock</code>，默认是将自己作为一锁。<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Reader</span> <span class="keyword">implements</span> <span class="title">Readable</span>, <span class="title">Closeable</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 用于同步流</span></span><br><span class="line">    <span class="keyword">protected</span> Object lock;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">Reader</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.lock = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">Reader</span><span class="params">(Object lock)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lock == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.lock = lock;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="InputStreamReader"><a href="#InputStreamReader" class="headerlink" title="InputStreamReader"></a><code>InputStreamReader</code></h3><p>InputStreamReader是从字节流到字符流的桥连接。它读取字节并将其编码成相应<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html" target="_blank" rel="external">字符集</a>的字符。字符集可以用指定的名称、或具体的字符集对象或者系统默认的字符集。</p>
+<p>其实现是通过<code>StreamDecoder</code>的forInputStreamReader方法进行编码。<code>read()</code>方法同样委托给<code>StreamDecoder</code>。</p>
+<h3 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a><code>FileReader</code></h3><p>集成于InputStreamReader，其实现是通过<code>FileInputSteam</code>创建字节流然后通过桥连接构造<code>StreamDecoder</code>，其读方法均有<code>InputStreamReader</code>实现（委托给<code>StreamDecoder</code>）。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InputStreamReader</span> <span class="keyword">extends</span> <span class="title">Reader</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">InputStreamReader</span><span class="params">(InputStream in)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(in);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            sd = StreamDecoder.forInputStreamReader(in, <span class="keyword">this</span>, (String)<span class="keyword">null</span>); <span class="comment">// check lock object</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            <span class="comment">// The default encoding should always be available</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Error(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sd.read();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileReader</span> <span class="keyword">extends</span> <span class="title">InputStreamReader</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FileReader</span><span class="params">(String fileName)</span> <span class="keyword">throws</span> FileNotFoundException </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(<span class="keyword">new</span> FileInputStream(fileName));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u7F13_u51B2_u6D41_uFF08Buffered_Stream_uFF09"><a href="#u7F13_u51B2_u6D41_uFF08Buffered_Stream_uFF09" class="headerlink" title="缓冲流（Buffered Stream）"></a>缓冲流（Buffered Stream）</h2><p>对于无缓冲的I/O操作，每次写或者读请求都会直接作用于操作系统，如硬盘访问、网络访问等代价非常昂贵的操作。 缓冲流的引入就是为了提升常规I/O操作的效率。</p>
+<p>缓冲输入流是从一块缓冲的内容中读取数据，只有当缓冲区没有数据时才会调用操作系统的API获取一整块的数据，然后放入缓冲区以供程序读取。同样，缓冲输出流每次向缓冲区写入数据，只有当缓冲区被写满后才会调用操作系统的API将数据真正写入目标位置。</p>
+<ul>
+<li><p><a href="https://docs.oracle.com/javase/8/docs/api/java/io/BufferedInputStream.html" target="_blank" rel="external">BufferedInputStream</a>、<a href="https://docs.oracle.com/javase/8/docs/api/java/io/BufferedOutputStream.html" target="_blank" rel="external">BufferedOutputStream</a>：用于创建缓冲的字节流<br><strong> 分别继承于<code>FilterInputStream</code>和<code>FilterOutputStream</code>，本身字节流成员。
+</strong> 必须使用字节流构造，并可以指定缓存区大小。</p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html" target="_blank" rel="external">BufferedReader</a>、<a href="https://docs.oracle.com/javase/8/docs/api/java/io/BufferedWriter.html" target="_blank" rel="external">BufferedWriter</a>：用于创建缓冲的字符流</p>
+</li>
+</ul>
+<h2 id="Scanning"><a href="#Scanning" class="headerlink" title="Scanning"></a>Scanning</h2><p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html" target="_blank" rel="external">Scanner</a>，一个文本扫描工具，使用正则表达式解析基本数据类型和<code>String</code>类型。<code>Scanner</code>可以使用分隔符将输入数据分割成诸多片段，默认的分隔符为<em>whitespace</em>（参见<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Character.html#isWhitespace-char-" target="_blank" rel="external">Character.isWhitespace</a>)。可以使用不同<code>next</code>方法将这些片段转化成不同的数据类型。</p>
+<h3 id="u6784_u6210_u65B9_u6CD5_uFF1A"><a href="#u6784_u6210_u65B9_u6CD5_uFF1A" class="headerlink" title="构成方法："></a>构成方法：</h3><ul>
+<li>字符流：<code>Readable</code>接口。比如继承于<code>Reader</code>的所有类，<code>FileReader</code>等。</li>
+<li><p>字节流：<code>InputStream</code>，支持自定义charset。其实现是将<em>字节流转化为字符流</em>，使用字符流构造。</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Scanner</span><span class="params">(InputStream source)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="keyword">new</span> InputStreamReader(source), WHITESPACE_PATTERN);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字节可读管道：<code>ReadableByteChannel</code>，比如对应文件的管道<code>FileChannel</code>。</p>
+</li>
+<li>文件：<code>File</code>，支持自定义charset。其实现是构造<code>FileInputStream</code>，获取文件管道<code>FileChannel</code>，然后使用字节可读管道构造。</li>
+<li>文件路径：<code>Path</code>，支持自定义charset。其实现是获取文件的字节流，然后构造字符流。</li>
+<li>字符串：<code>String</code>。其实现是构造<code>StringReader</code>，然后构造字符流。</li>
+</ul>
+<h3 id="u4E3B_u8981_u65B9_u6CD5"><a href="#u4E3B_u8981_u65B9_u6CD5" class="headerlink" title="主要方法"></a>主要方法</h3><ul>
+<li><code>hasNext、next</code>：不仅支持基础类型，还支持<code>BigDecimal</code>、<code>BigInteger</code>以及<code>nextLine</code>。这两个方法都会阻塞（block）等待输入。</li>
+<li><code>useDelimiter</code>：自定义分隔符。</li>
+<li><code>reset</code>：重置分隔符为<em>whitespace</em>。</li>
+</ul>
+<h2 id="PrintStream"><a href="#PrintStream" class="headerlink" title="PrintStream"></a><a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html" target="_blank" rel="external">PrintStream</a></h2><ul>
+<li>异常：不会抛<code>IOException</code>，但是内部会有相应的标记，可以通过<code>checkError</code>来检查。</li>
+<li>自动flush：当写入一个字节数组、或者调用<code>println</code>方法、或者写入换行符<code>\n</code>时会自动flush。</li>
+</ul>
+<p><em>注意</em>： 通过<em>PrintStream</em>打印的字符均会根据平台默认的字符编码被转成字节。</p>
+<h3 id="u6784_u9020_u65B9_u6CD5_uFF1A"><a href="#u6784_u9020_u65B9_u6CD5_uFF1A" class="headerlink" title="构造方法："></a>构造方法：</h3><p>支持字节流、文件、文件名进行构造。使用字节流构造时，可自定义是否自动flush，默认为<code>false</code>。使用文件名或文件时，不可自定义，默认也为<code>false</code>。</p>
+<p>相应的，用于处理字符的类为<a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html" target="_blank" rel="external">PrintWriter</a>。一般情况下直接使用<code>PrintWriter</code>。</p>
+<h3 id="u4E3B_u8981_u65B9_u6CD5-1"><a href="#u4E3B_u8981_u65B9_u6CD5-1" class="headerlink" title="主要方法"></a>主要方法</h3><ul>
+<li><code>format(String format, Object... args)</code><br>类似C语言，格式化输入源数据。具体语法参考<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax" target="_blank" rel="external">Formatter</a>。</li>
+</ul>
+<h2 id="PrintWriter"><a href="#PrintWriter" class="headerlink" title="PrintWriter"></a><a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html" target="_blank" rel="external">PrintWriter</a></h2><p>跟<code>PrintStream</code>类似，也是用于格式化输出。并且实现了所有<code>PrintStream</code>的方法。但自动flush时有点不同：不再直接检查被写入的是否为换行符<code>\n</code>，而是检查是否为当前平台的换行符。</p>
+<p>支持字节流（OutStream）、字符流（Writer）、文件名、文件（File）进行构造。特别的，除了字节流构造意外，其他实现均为会转化成缓存字符流（<code>BufferedWriter</code>）。</p>
+<h2 id="u6807_u51C6_u6D41"><a href="#u6807_u51C6_u6D41" class="headerlink" title="标准流"></a>标准流</h2><p>标准输入流：<code>System.in</code>。<br>标准输出流：<code>System.out</code>，<code>System.error</code>。</p>
+<p>因为历史原因，这些标准流均为<em>字节流</em>，而非字符流。需要转化时可以通过<code>InputStreamReader</code>进行转化，如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">InputStreamReader cin = <span class="keyword">new</span> InputStreamReader(System.in)</span><br></pre></td></tr></table></figure>
+<h2 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h2><p><code>Console</code>是更强大的标准流，同时提供了输入流和输出流，并且是字符流。还有一个安全特性是针对密码输入时设计。</p>
+<ul>
+<li>无public构造函数：使用时，通过System获取，<code>System.console()</code>。</li>
+<li>readPassword：返回一个字符（char）数组，不再使用时可以将其重写置空，从内存中删除。</li>
+</ul>
+<h2 id="u6570_u636E_u6D41_uFF08DataStream_uFF09"><a href="#u6570_u636E_u6D41_uFF08DataStream_uFF09" class="headerlink" title="数据流（DataStream）"></a>数据流（DataStream）</h2><p>对输入/输出字节流的包装，方便程序中输入/输出基本类型以及String。</p>
+<p>因为DataStream操作的是字节流，所以在使用时可以使用缓存流<code>BufferedInputStream</code>和<code>BufferedOutputStream</code>。</p>
+<p>与其他流不同的地方是检测输入结束的条件，它是通过catch<code>EOFException</code>，而不是检测返回值，参见一下具体实现：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">byte</span> <span class="title">readByte</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ch = in.read();</span><br><span class="line">    <span class="keyword">if</span> (ch &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> EOFException();</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">byte</span>)(ch);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u5BF9_u8C61_u6D41_uFF08Object_Stream_uFF09"><a href="#u5BF9_u8C61_u6D41_uFF08Object_Stream_uFF09" class="headerlink" title="对象流（Object Stream）"></a>对象流（Object Stream）</h2><p>对象流包括<code>ObjectInputSteam</code>和<code>ObjectOutputStream</code>，实现的接口分别为<code>ObjectInput</code>和<code>ObjectOutput</code>（继承于数据流接口<code>DataInput</code>）。这也意味着在数据流中所有基本数据类型相关的方法，在对象流中都有相应的实现。</p>
+<p><code>ObjectInputSteam</code>用来反序列化那些用<code>ObjectOutputStream</code>序列化的基本数据类型和对象。而<code>ObjectOutputStream</code>则是一种将对象持久化的方法。</p>
+<h3 id="u590D_u6742_u5BF9_u8C61_u7684_u8F93_u5165_u6D41_u4E0E_u8F93_u51FA_u6D41"><a href="#u590D_u6742_u5BF9_u8C61_u7684_u8F93_u5165_u6D41_u4E0E_u8F93_u51FA_u6D41" class="headerlink" title="复杂对象的输入流与输出流"></a>复杂对象的输入流与输出流</h3><ul>
+<li>当一个对象引用了其他对象时，其所有引用都会被写入流中。</li>
+<li>当多个对象引用了同一个对象时，被引用的对象在流中只会存在一份。</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>流（Stream）是java中输入和输出经常涉及也是最简单的概念。Java中存在各种各样的流，字符流、字节流、缓存流、基本数据流、对象流等。Java持久化中谈及的序列化与反序列化同样离不开流（将整个对象写入流中，并可以从流中获取整个对象）。</p>]]>
+    
+    </summary>
+    
+      <category term="IO" scheme="http://www.xiaoyuxee.com/tags/IO/"/>
+    
+      <category term="Java-Core" scheme="http://www.xiaoyuxee.com/categories/Java-Core/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Java8中的Stream]]></title>
