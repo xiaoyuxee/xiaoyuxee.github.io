@@ -4,7 +4,7 @@
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.xiaoyuxee.com/"/>
-  <updated>2016-03-14T18:08:14.000Z</updated>
+  <updated>2016-03-15T17:41:57.000Z</updated>
   <id>http://www.xiaoyuxee.com/</id>
   
   <author>
@@ -15,11 +15,68 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Java中的多线程（一）]]></title>
+    <title><![CDATA[Java中的多线程（二）：同步机制]]></title>
+    <link href="http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-2/"/>
+    <id>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-2/</id>
+    <published>2016-03-15T03:32:44.000Z</published>
+    <updated>2016-03-15T17:41:57.000Z</updated>
+    <content type="html"><![CDATA[<p>进程中的多个线程间往往需要通信，共同完成或维护进程的目的。线程间的通信主要通过共享数据（基础类型数据，对象引用等)，这种共享数据的方式会导致两种潜在发生的错误：线程干扰（thread interference）和内存一致性错误（memory consistency errors）。而同步（synchronization）机制应运而生，用于解决上面可能出现的错误。</p>
+<p>同步机制虽然可以解决线程干扰和内存一致性问题，但也可能带来其他问题：线程竞争（thread contention）。当多个线程尝试访问同一块资源时产出了竞争关系，有可能会导致线程被挂起或者死锁。</p>
+<a id="more"></a>
+<h2 id="u7EBF_u7A0B_u5E72_u6270"><a href="#u7EBF_u7A0B_u5E72_u6270" class="headerlink" title="线程干扰"></a>线程干扰</h2><p>线程干扰是指，别的线程会影响当前线程执行结果的正确性。<br>举个常见的栗子：<code>i++</code>。这个自增操作对应的jvm指令大概是这样：</p>
+<ol>
+<li>内存中获取 i 的值</li>
+<li>对 i 执行 i+1 操作</li>
+<li>将 i+1 写入内存</li>
+</ol>
+<p>如果两个线程同时对某一成员执行自增操作，考虑以下场景：两个线程同时从内存中取得相同的值，执行递增操作后，写入内存的时间发生了差异。那么后执行的线程必然覆盖提前结束线程的操作结果。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">increase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">100000</span>; i++) &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">reduce</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">100000</span>; i++) &#123;</span><br><span class="line">            count--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testInterference</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Counter counter = <span class="keyword">new</span> Counter();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">new</span> Thread(() -&gt; counter.increase());</span><br><span class="line">    </span><br><span class="line">    counter.reduce();</span><br><span class="line">    </span><br><span class="line">    Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">    <span class="comment">// 断言将会失败</span></span><br><span class="line">    assertEquals(<span class="number">0</span>, counter.getCount());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u5185_u5B58_u4E00_u81F4_u6027_u95EE_u9898"><a href="#u5185_u5B58_u4E00_u81F4_u6027_u95EE_u9898" class="headerlink" title="内存一致性问题"></a>内存一致性问题</h2><p>每个线程有自己的栈，为了提供访问效率，一般会将进程中堆上的数据做一份缓存放在自己的栈上面。那么有可能在短暂时间内会导致一个线程的修改结果对另一个线程不可见。Java提供了<a href="https://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.5" target="_blank" rel="external">happens-before</a>机制来避免内存一致性问题。</p>
+<h3 id="happens-before"><a href="#happens-before" class="headerlink" title="happens-before"></a>happens-before</h3><p>只有当一个写操作与读操作存在happens-before关系时，才能保证此写操作的结果对那个读操作可见。同步（synchronized）、volatile关键字、Thread.start()，Thread.join()都会建立happens-before关系。</p>
+<ul>
+<li>一个线程中，每个操作与当前线程中后面的操作存在happens-before关系。</li>
+<li>未上锁的同步区块或方法与后面的锁定区块或方法存在happens-before关系（注意：这种关系是可以传递的）</li>
+<li>一个<em>volatile</em>域的写操作与随后的读操作存在happens-before关系。</li>
+<li>一个主线程与它启动的其他线程存在happens-before关系。</li>
+<li>一个线程与成功join的其他线程存在happens-before关系。</li>
+</ul>
+<h2 id="u5185_u90E8_u9501_u4E0E_u76D1_u89C6_u5668"><a href="#u5185_u90E8_u9501_u4E0E_u76D1_u89C6_u5668" class="headerlink" title="内部锁与监视器"></a>内部锁与监视器</h2><p>同步机制的实现是通过监视器来实现：<em>Java中的每个对象都会有一个可以锁定或者解锁的监视器</em>。任何时间段里有且只可能有一个线程拥有这个监视器的锁。任何尝试锁定已经锁定监视的线程都会被阻塞，直到他们获得监视器的锁。</p>
+<p><em>同步语句</em>会计算对象的引用，并尝试对对象的监视器进行锁定操作，直到锁定操作成功后才会执行后面的操作。当同步内容执行完毕后，又会自动对监视器进行解锁操作。</p>
+<p>当一个<em>同步方法</em>被调用时，会自动进行锁定监视器的操作，同样只有锁定操作成功后才会执行方法体内的操作。对于<em>实例方法</em>，锁定的是被调用实例的监视器。而对于<em>静态方法</em>，锁定的是被调用的<code>Class</code>对象。</p>
+<p>Java中并不会避免或者检测<em>死锁条件</em>，所以应用程序必要时需要自己避免死锁。</p>
+<h2 id="u540C_u6B65_u65B9_u6CD5"><a href="#u540C_u6B65_u65B9_u6CD5" class="headerlink" title="同步方法"></a>同步方法</h2><p>方法同步的影响：</p>
+<ul>
+<li>不允许对一个对象的两个方法交替调用。也就是说当一个线程正在执行某对象的同步方法时，其他调用改方法的线程将被阻塞或挂起，直到那个正在执行的线程执行完毕。</li>
+<li>当退出同步方法时，将与随后对此方法的调用自动建立happens-before关系。保证对象状态的改变对随后的线程可见。</li>
+</ul>
+<p>构造方法不能用于同步，因为没有意义。</p>
+<h2 id="u540C_u6B65_u8BED_u53E5"><a href="#u540C_u6B65_u8BED_u53E5" class="headerlink" title="同步语句"></a>同步语句</h2><p>同步方法是对整个被调用的（this）<em>实例</em>或者<em>Class</em>的监视器进行锁定，而同步语句不一定要对当前被调用的实例锁定，它可以锁定指定的对象，这将非常有帮助。比如一个类中有两个成员，foo和bar，但它们并不会同时使用。所有对它们的更新都需要同步，但并不意味着两个线程不可以交叉分别更新它们。我们可以单独对它们的监视器进行锁定，针对基本类型可以分别创建一个对象锁。<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyLock</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> foo;</span><br><span class="line">    <span class="keyword">private</span> Object lockForFoo = <span class="keyword">new</span> Object();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Long bar = <span class="number">0L</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">increaseFoo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (lockForFoo) &#123;</span><br><span class="line">            foo++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">increaseBar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (bar) &#123;</span><br><span class="line">            bar++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.format(<span class="string">"foo=%d, bar=%d%n"</span>, foo, bar);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    MyLock lock = <span class="keyword">new</span> MyLock();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">new</span> Thread(() -&gt; lock.increaseFoo()).start();;</span><br><span class="line">    <span class="keyword">new</span> Thread(() -&gt; lock.increaseBar()).start();;</span><br><span class="line">    </span><br><span class="line">    Thread.sleep(<span class="number">10</span>);</span><br><span class="line">    lock.print();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="u591A_u6B21_u540C_u6B65"><a href="#u591A_u6B21_u540C_u6B65" class="headerlink" title="多次同步"></a>多次同步</h2><p>大家已经知道一个线程只能等待另一个线程解锁监视器后才能调用其同步方法，那如果一个同步方法中会调用另外一个同步方法会怎样？答案是可以的，该线程已经获得了这个实例的内部锁，可以再次进入别的同步方法。</p>
+<h2 id="u539F_u5B50_u8BBF_u95EE"><a href="#u539F_u5B50_u8BBF_u95EE" class="headerlink" title="原子访问"></a>原子访问</h2><p>如上所示，<code>c++</code>在多线程环境容易导致并发问题，其中一个原因为这并不是一个原子性的操作，它被分解成3个指令来执行。对于这种基本类型的增减操作，Java提供了相关的<code>Atomic</code>原子类。</p>
+<p>原子操作，意味着要么被全部执行，要么什么都不执行。虽然原子操作可以避免线程干扰的问题，但是不是在多线程环境下就一定不会有线程安全问题呢？答案是否定的，因为可能导致内存不一致问题。这时<code>volatile</code>就派上用场了。所以在使用Atomic类是需要注意内存一致性问题。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>进程中的多个线程间往往需要通信，共同完成或维护进程的目的。线程间的通信主要通过共享数据（基础类型数据，对象引用等)，这种共享数据的方式会导致两种潜在发生的错误：线程干扰（thread interference）和内存一致性错误（memory consistency errors）。而同步（synchronization）机制应运而生，用于解决上面可能出现的错误。</p>
+<p>同步机制虽然可以解决线程干扰和内存一致性问题，但也可能带来其他问题：线程竞争（thread contention）。当多个线程尝试访问同一块资源时产出了竞争关系，有可能会导致线程被挂起或者死锁。</p>]]>
+    
+    </summary>
+    
+      <category term="Concurrence" scheme="http://www.xiaoyuxee.com/tags/Concurrence/"/>
+    
+      <category term="Synchronization" scheme="http://www.xiaoyuxee.com/tags/Synchronization/"/>
+    
+      <category term="Thread" scheme="http://www.xiaoyuxee.com/tags/Thread/"/>
+    
+      <category term="Java-Core" scheme="http://www.xiaoyuxee.com/categories/Java-Core/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Java中的多线程（一）：线程的基本概念和使用]]></title>
     <link href="http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-1/"/>
     <id>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-1/</id>
     <published>2016-03-14T16:03:52.000Z</published>
-    <updated>2016-03-14T18:08:14.000Z</updated>
+    <updated>2016-03-15T17:19:51.000Z</updated>
     <content type="html"><![CDATA[<p>日常生活中常常会遇到并发场景，比如你浏览网页的同时，可能同时会受到QQ好友的消息。接下来的一些列文章将介绍如何在Java语言中进行多线程的编程。</p>
 <p>本文介绍线程的一些基本概念和操作，如什么是线程，如何创建以及线程的睡眠与中断、join。</p>
 <a id="more"></a>
@@ -27,6 +84,7 @@
 <p>而进程通常包含一个独立的运行环境，每个进程有自己的内存空间。</p>
 <h2 id="u7EBF_u7A0B_uFF08Thread_uFF09"><a href="#u7EBF_u7A0B_uFF08Thread_uFF09" class="headerlink" title="线程（Thread）"></a>线程（Thread）</h2><p>Java中每一个线程都是一个<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html" target="_blank" rel="external">Thread</a>的实例。</p>
 <h3 id="u7EBF_u7A0B_u7684_u521B_u5EFA"><a href="#u7EBF_u7A0B_u7684_u521B_u5EFA" class="headerlink" title="线程的创建"></a>线程的创建</h3><h4 id="u5B9E_u73B0Runable"><a href="#u5B9E_u73B0Runable" class="headerlink" title="实现Runable"></a>实现Runable</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">HelloRunable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"Hello Multithread!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="annotation">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCreateThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> HelloRunable()).start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>or 使用Lambda表达式<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread(() -&gt; System.out.println(<span class="string">"Hello Multithread!"</span>)).start();</span><br></pre></td></tr></table></figure></p>
 <h4 id="u7EE7_u627FThread"><a href="#u7EE7_u627FThread" class="headerlink" title="继承Thread"></a>继承Thread</h4><p><code>Thread</code>实现了<code>Runable</code>接口，所以可以覆盖它的run()方法来创建一个线程。run方法的实现为：<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Runnable target;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (target != <span class="keyword">null</span>) &#123;</span><br><span class="line">            target.run();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCreateThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">new</span> Thread() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"Hello Multithread!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="start_u4E0Erun"><a href="#start_u4E0Erun" class="headerlink" title="start与run"></a>start与run</h4><p>start方法有jvm实现，创建一个线程并调用run方法。而run方法只不过是Thread的一个普通方法，单独调用时也会普通的调用，仍然在主线程线程中。</p>
@@ -40,7 +98,7 @@
 <h3 id="joins"><a href="#joins" class="headerlink" title="joins"></a>joins</h3><p>Thead的<code>join</code>方法会让一个线程等待另一个线程完成。当在一个线程中调用另一个线程的<code>join</code>方法后，当前线程会停止执行后面的语句，直到另外一个线程完成。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testInterrupt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Thread interrupt = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"sub over"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    interrupt.start();</span><br><span class="line">    <span class="comment">// interrupt.join();</span></span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">"main over"</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <p>运行上面这个demo，你在控制台将看不到打印”sub over”：因为主线程没有睡眠，会比子线程先运行结束。除非将注释的代码放开。</p>
-<h2 id="u540C_u6B65"><a href="#u540C_u6B65" class="headerlink" title="同步"></a>同步</h2>]]></content>
+]]></content>
     <summary type="html">
     <![CDATA[<p>日常生活中常常会遇到并发场景，比如你浏览网页的同时，可能同时会受到QQ好友的消息。接下来的一些列文章将介绍如何在Java语言中进行多线程的编程。</p>
 <p>本文介绍线程的一些基本概念和操作，如什么是线程，如何创建以及线程的睡眠与中断、join。</p>]]>

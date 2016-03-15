@@ -2,8 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-2/</loc>
+    <lastmod>2016-03-15T17:41:57.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-1/</loc>
-    <lastmod>2016-03-14T18:08:14.000Z</lastmod>
+    <lastmod>2016-03-15T17:19:51.000Z</lastmod>
   </url>
   
   <url>

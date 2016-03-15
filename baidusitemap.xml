@@ -4,11 +4,35 @@
 
     
   <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-1/</loc>
-    <lastmod>2016-03-14T18:08:14.000Z</lastmod>
+    <loc>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-2/</loc>
+    <lastmod>2016-03-15T17:41:57.000Z</lastmod>
     <data>
         <display>
-        <title>Java中的多线程（一）</title>
+        <title>Java中的多线程（二）：同步机制</title>
+        <pubTime>2016-03-15T03:32:44.000Z</pubTime>
+        
+        <tag>Concurrence</tag>
+         
+        <tag>Synchronization</tag>
+         
+        <tag>Thread</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java-Core" url="http://www.xiaoyuxee.com/categories/Java-Core/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-1/</loc>
+    <lastmod>2016-03-15T17:19:51.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java中的多线程（一）：线程的基本概念和使用</title>
         <pubTime>2016-03-14T16:03:52.000Z</pubTime>
         
         <tag>Concurrence</tag>
