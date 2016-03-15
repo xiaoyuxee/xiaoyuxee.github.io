@@ -41,7 +41,7 @@ InputStreamReader是从字节流到字符流的桥连接。它读取字节并将
 其实现是通过`StreamDecoder`的forInputStreamReader方法进行编码。`read()`方法同样委托给`StreamDecoder`。
 
 ### `FileReader`
-集成于InputStreamReader，其实现是通过`FileInputSteam`创建字节流然后通过桥连接构造`StreamDecoder`，其读方法均有`InputStreamReader`实现（委托给`StreamDecoder`）。
+继承于In继承putStreamReader，其实现是通过`FileInputSteam`创建字节流然后通过桥连接构造`StreamDecoder`，其读方法均由`InputStreamReader`实现（委托给`StreamDecoder`）。
 
 ``` java
 public class InputStreamReader extends Reader {
