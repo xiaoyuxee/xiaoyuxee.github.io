@@ -214,11 +214,11 @@ a:focus {
       .post .post-content p code {
         display: inline;
         margin: 0 5px;
-        padding: 0px 5px;
+        padding: 0 5px;
         border: 1px solid #ccc;
-        background: #eee;
         border-radius: 3px;
-        word-break: break-word; }
+        word-break: break-word;
+        background: #f7f8f8; }
       .post .post-content p a {
         color: #01579f;
         padding-bottom: 2px;
@@ -252,9 +252,9 @@ a:focus {
         margin: 0 5px;
         padding: 0 5px;
         border: 1px solid #ccc;
-        background: #eee;
         border-radius: 3px;
-        word-break: break-word; }
+        word-break: break-word;
+        background: #f7f8f8; }
       .post .post-content ul a, .post .post-content ol a {
         color: #01579f;
         padding-bottom: 2px;

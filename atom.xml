@@ -4,7 +4,7 @@
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.xiaoyuxee.com/"/>
-  <updated>2016-03-16T16:47:50.000Z</updated>
+  <updated>2016-03-16T16:48:00.000Z</updated>
   <id>http://www.xiaoyuxee.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.xiaoyuxee.com/2016/03/16/concurrence-in-java-3/"/>
     <id>http://www.xiaoyuxee.com/2016/03/16/concurrence-in-java-3/</id>
     <published>2016-03-15T17:58:19.000Z</published>
-    <updated>2016-03-16T16:47:50.000Z</updated>
+    <updated>2016-03-16T16:48:00.000Z</updated>
     <content type="html"><![CDATA[<p>一个并发程序的及时执行能力叫做活跃度（liveness）。活跃度问题一般包括死锁（deadlock）、饥饿（starvation）和活锁（liveness）。</p>
 <a id="more"></a>
 <h2 id="u6B7B_u9501_uFF08deadlock_29"><a href="#u6B7B_u9501_uFF08deadlock_29" class="headerlink" title="死锁（deadlock)"></a>死锁（deadlock)</h2><p>死锁，指两个或更多的线程被永久阻塞，等待彼此进行解锁。</p>
@@ -52,7 +52,7 @@
     <link href="http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-2/"/>
     <id>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-2/</id>
     <published>2016-03-15T03:32:44.000Z</published>
-    <updated>2016-03-16T16:53:04.000Z</updated>
+    <updated>2016-03-16T16:53:16.000Z</updated>
     <content type="html"><![CDATA[<p>进程中的多个线程间往往需要通信，共同完成或维护进程的目的。线程间的通信主要通过共享数据（基础类型数据，对象引用等)，这种共享数据的方式会导致两种潜在发生的错误：线程干扰（thread interference）和内存一致性错误（memory consistency errors）。而同步（synchronization）机制应运而生，用于解决上面可能出现的错误。</p>
 <p>同步机制虽然可以解决线程干扰和内存一致性问题，但也可能带来其他问题：线程竞争（thread contention）。当多个线程尝试访问同一块资源时产出了竞争关系，有可能会导致线程被挂起或者死锁。</p>
 <a id="more"></a>
