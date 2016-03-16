@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-2/</loc>
-    <lastmod>2016-03-15T17:41:57.000Z</lastmod>
+    <lastmod>2016-03-16T16:53:04.000Z</lastmod>
     <data>
         <display>
         <title>Java中的多线程（二）：同步机制</title>
@@ -28,8 +28,32 @@
 
     
   <url>
+    <loc>http://www.xiaoyuxee.com/2016/03/16/concurrence-in-java-3/</loc>
+    <lastmod>2016-03-16T16:47:50.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java中的多线程（三）：活跃度</title>
+        <pubTime>2016-03-15T17:58:19.000Z</pubTime>
+        
+        <tag>Concurrence</tag>
+         
+        <tag>Liveness</tag>
+         
+        <tag>Thread</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java-Core" url="http://www.xiaoyuxee.com/categories/Java-Core/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-1/</loc>
-    <lastmod>2016-03-15T17:19:51.000Z</lastmod>
+    <lastmod>2016-03-15T17:20:24.000Z</lastmod>
     <data>
         <display>
         <title>Java中的多线程（一）：线程的基本概念和使用</title>
