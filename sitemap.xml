@@ -2,17 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-2/</loc>
+    <loc>http://www.xiaoyuxee.com/2016/03/31/synchronizer-in-java-concurrency/</loc>
+    <lastmod>2016-03-31T16:21:40.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoyuxee.com/2016/03/16/liveness-in-java-concurrency/</loc>
+    <lastmod>2016-03-30T16:34:16.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoyuxee.com/2016/03/15/synchronization-in-java-concurrency/</loc>
     <lastmod>2016-03-16T16:53:16.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/16/concurrence-in-java-3/</loc>
-    <lastmod>2016-03-16T16:48:00.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/15/concurrence-in-java-1/</loc>
+    <loc>http://www.xiaoyuxee.com/2016/03/15/base-in-java-concurrency/</loc>
     <lastmod>2016-03-15T17:20:24.000Z</lastmod>
   </url>
   
@@ -62,12 +67,12 @@
   </url>
   
   <url>
-    <loc>http://www.xiaoyuxee.com/2016/01/11/My-2015/</loc>
+    <loc>http://www.xiaoyuxee.com/2016/01/11/my-2015/</loc>
     <lastmod>2016-01-12T16:15:49.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://www.xiaoyuxee.com/2016/01/10/Hello-World/</loc>
+    <loc>http://www.xiaoyuxee.com/2016/01/10/hello-world/</loc>
     <lastmod>2016-01-10T16:25:29.000Z</lastmod>
   </url>
   
