@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.xiaoyuxee.com/2016/04/07/executor-in-java-concurrency/</loc>
+    <lastmod>2016-04-16T12:58:01.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoyuxee.com/2016/03/13/in-depth-understanding-of-channel-in-nio/</loc>
+    <lastmod>2016-04-16T07:25:53.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.xiaoyuxee.com/2016/03/31/synchronizer-in-java-concurrency/</loc>
     <lastmod>2016-03-31T16:21:40.000Z</lastmod>
   </url>
@@ -29,11 +39,6 @@
   <url>
     <loc>http://www.xiaoyuxee.com/2016/03/11/nio-in-java/</loc>
     <lastmod>2016-03-14T15:21:01.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/13/in-depth-understanding-of-channel-in-nio/</loc>
-    <lastmod>2016-03-14T08:34:47.000Z</lastmod>
   </url>
   
   <url>

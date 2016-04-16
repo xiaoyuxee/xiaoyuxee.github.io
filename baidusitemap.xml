@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>http://www.xiaoyuxee.com/2016/04/07/executor-in-java-concurrency/</loc>
+    <lastmod>2016-04-16T12:58:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java中的多线程（五）：ThreadPoolExecutor框架源码解析</title>
+        <pubTime>2016-04-07T09:07:43.000Z</pubTime>
+        
+        <tag>Concurrence</tag>
+         
+        <tag>ThreadPool</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java-Core" url="http://www.xiaoyuxee.com/categories/Java-Core/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoyuxee.com/2016/03/13/in-depth-understanding-of-channel-in-nio/</loc>
+    <lastmod>2016-04-16T07:25:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>深入理解NIO中的Channel</title>
+        <pubTime>2016-03-13T02:16:44.000Z</pubTime>
+        
+        <tag>Channel</tag>
+         
+        <tag>NIO</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java-Core" url="http://www.xiaoyuxee.com/categories/Java-Core/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.xiaoyuxee.com/2016/03/31/synchronizer-in-java-concurrency/</loc>
     <lastmod>2016-03-31T16:21:40.000Z</lastmod>
     <data>
@@ -125,28 +169,6 @@
         <title>Java中的NIO</title>
         <pubTime>2016-03-11T08:36:02.000Z</pubTime>
         
-        <tag>NIO</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java-Core" url="http://www.xiaoyuxee.com/categories/Java-Core/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/13/in-depth-understanding-of-channel-in-nio/</loc>
-    <lastmod>2016-03-14T08:34:47.000Z</lastmod>
-    <data>
-        <display>
-        <title>深入理解nio中的Channel</title>
-        <pubTime>2016-03-13T02:16:44.000Z</pubTime>
-        
-        <tag>Channel</tag>
-         
         <tag>NIO</tag>
          
          
