@@ -1,5 +1,5 @@
 ---
-title: 深入理解nio中的Channel
+title: 深入理解NIO中的Channel
 date: 2016-03-13 10:16:44
 tags:
 - NIO
