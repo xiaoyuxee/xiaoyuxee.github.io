@@ -4,7 +4,7 @@
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.xiaoyuxee.com/"/>
-  <updated>2016-04-16T12:58:01.000Z</updated>
+  <updated>2016-04-16T13:00:24.000Z</updated>
   <id>http://www.xiaoyuxee.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.xiaoyuxee.com/2016/04/07/executor-in-java-concurrency/"/>
     <id>http://www.xiaoyuxee.com/2016/04/07/executor-in-java-concurrency/</id>
     <published>2016-04-07T09:07:43.000Z</published>
-    <updated>2016-04-16T12:58:01.000Z</updated>
+    <updated>2016-04-16T13:00:24.000Z</updated>
     <content type="html"><![CDATA[<p>启动线程任务最简单的方式是：为每个任务都创建一个线程（per-task）。在没有超出服务器处理能力时，这种方法既可以提升响应速度、又可以提升吞吐量。</p>
 <p>而在实际应用中，这种<em>thread-per-task</em>存在缺陷，特别是需要创建大量的线程时：</p>
 <ul>
@@ -129,7 +129,7 @@
     <link href="http://www.xiaoyuxee.com/2016/03/31/synchronizer-in-java-concurrency/"/>
     <id>http://www.xiaoyuxee.com/2016/03/31/synchronizer-in-java-concurrency/</id>
     <published>2016-03-30T16:15:18.000Z</published>
-    <updated>2016-03-31T16:21:40.000Z</updated>
+    <updated>2016-04-11T01:43:51.000Z</updated>
     <content type="html"><![CDATA[<p>多线程编程中经常会遇到线程协调问题。比如经典的生产者-消费者模式，生产者和消费者的工作需要通过一个作业队列来协调：当队列中有作业时消费者才会从队列中取出一个作业进行消费，否则将一直处于等待状态。</p>
 <p>最基础的线程协调可以通过同步机制与<code>wait()</code>结合来实现：在某个对象中设置一个标记，当修改标记后通过<code>notifyAll()</code>来通知其他等待的线程。</p>
 <p>幸运的是Java提供一些同步器来协调线程间的控制流。同步器内部封装了一些状态，这些状态将决定执行同步器的线程是继续执行还是等待。常用的同步器有阻塞队列（BlockingQueue）、闭锁（Latch）、信号量（Semaphore）和栅栏（Barrier）。</p>
