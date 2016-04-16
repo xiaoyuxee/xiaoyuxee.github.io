@@ -82,7 +82,7 @@
 <li>CAS（campare and set）机制与原子性：<br>为了提高系统活跃度，整个框架总是先获取线程池状态：<code>c=ctl.get()</code>，然后循环<code>for(;;)</code>进行<em>compareAndSet</em>操作，确保<em>当前一系列操作的原子性</em>没有被破坏</li>
 <li>mainLock：工作线程workers、已完成任务数量completedTaskCount均是非线程安全的，通过<code>ReentrantLock</code>保证其线程安全</li>
 </ul>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://www.xiaoyuxee.com/2016/04/07/executor-in-java-concurrency/" data-id="cin35pvey001gtp66kjuirvj2" class="article-share-link">分享到</a><div class="tags"><a href="/tags/Concurrence/">Concurrence</a><a href="/tags/ThreadPool/">ThreadPool</a></div><div class="post-nav"><a href="/2016/03/31/synchronizer-in-java-concurrency/" class="next">Java中的多线程（四）：同步器</a></div><div id="disqus_thread"><script>var disqus_shortname = 'xiaoyuxee';
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://www.xiaoyuxee.com/2016/04/07/executor-in-java-concurrency/" data-id="cin35y5bw001g61664dflb5ae" class="article-share-link">分享到</a><div class="tags"><a href="/tags/Concurrence/">Concurrence</a><a href="/tags/ThreadPool/">ThreadPool</a></div><div class="post-nav"><a href="/2016/03/31/synchronizer-in-java-concurrency/" class="next">Java中的多线程（四）：同步器</a></div><div id="disqus_thread"><script>var disqus_shortname = 'xiaoyuxee';
 var disqus_identifier = '2016/04/07/executor-in-java-concurrency/';
 var disqus_title = 'Java中的多线程（五）：ThreadPoolExecutor框架源码解析';
 var disqus_url = 'http://www.xiaoyuxee.com/2016/04/07/executor-in-java-concurrency/';

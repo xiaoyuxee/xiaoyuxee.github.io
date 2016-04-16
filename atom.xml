@@ -4,7 +4,7 @@
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.xiaoyuxee.com/"/>
-  <updated>2016-04-16T13:00:24.000Z</updated>
+  <updated>2016-04-16T13:12:04.000Z</updated>
   <id>http://www.xiaoyuxee.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.xiaoyuxee.com/2016/04/07/executor-in-java-concurrency/"/>
     <id>http://www.xiaoyuxee.com/2016/04/07/executor-in-java-concurrency/</id>
     <published>2016-04-07T09:07:43.000Z</published>
-    <updated>2016-04-16T13:00:24.000Z</updated>
+    <updated>2016-04-16T13:12:04.000Z</updated>
     <content type="html"><![CDATA[<p>启动线程任务最简单的方式是：为每个任务都创建一个线程（per-task）。在没有超出服务器处理能力时，这种方法既可以提升响应速度、又可以提升吞吐量。</p>
 <p>而在实际应用中，这种<em>thread-per-task</em>存在缺陷，特别是需要创建大量的线程时：</p>
 <ul>
