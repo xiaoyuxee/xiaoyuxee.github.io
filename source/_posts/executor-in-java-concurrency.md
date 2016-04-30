@@ -2,7 +2,7 @@
 title: Java中的多线程（五）：ThreadPoolExecutor框架源码解析
 date: 2016-04-07 17:07:43
 tags: 
-- Concurrence
+- Concurrency
 - ThreadPool
 categories: Java-Core
 toc: true
@@ -119,8 +119,8 @@ public void execute(Runnable command) {
         reject(command);
 }
 ```
-#### 状态二次校验
-将任务放入缓存队列后有一个二次校验：如果线程池已经关闭，那么将其从队列中剔除，并且直接执行拒绝流程。当然没有这块判断，这个任务最终也不会被执行，只是反馈被延迟了。
+#### 线程池状态二次校验
+将任务放入缓存队列后对线程池状态有一个二次校验：如果线程池已经关闭，那么将其从队列中剔除，并且直接执行拒绝流程。当然没有这块判断，这个任务最终也不会被执行，只是反馈被延迟了。
 
 ### 线程的新增机制
 `addWorker`方法至关重要，因为增加工作线程总是伴随着任务的提交，新建的线程需要立刻用于执行被提交的任务：

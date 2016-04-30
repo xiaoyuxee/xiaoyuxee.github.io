@@ -2,7 +2,7 @@
 title: Java中的多线程（四）：同步器
 date: 2016-03-31 00:15:18
 tags:
-- Concurrence
+- Concurrency
 - Thread
 - Synchronizer
 categories: Java-Core

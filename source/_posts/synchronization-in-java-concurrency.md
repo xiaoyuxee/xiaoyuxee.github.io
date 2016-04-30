@@ -2,7 +2,7 @@
 title: Java中的多线程（二）：同步机制
 date: 2016-03-15 11:32:44
 tags:
-- Concurrence
+- Concurrency
 - Thread
 - Synchronization
 categories: Java-Core

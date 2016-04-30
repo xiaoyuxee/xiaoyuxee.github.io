@@ -2,7 +2,7 @@
 title: Java中的多线程（一）：线程的基本概念和使用
 date: 2016-03-15 00:03:52
 tags:
-- Concurrence
+- Concurrency
 - Thread
 categories: Java-Core
 toc: true

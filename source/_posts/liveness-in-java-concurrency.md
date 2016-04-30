@@ -2,7 +2,7 @@
 title: Java中的多线程（三）：活跃度
 date: 2016-03-16 01:58:19
 tags: 
-- Concurrence
+- Concurrency
 - Thread
 - Liveness
 categories: Java-Core
