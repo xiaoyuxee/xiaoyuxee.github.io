@@ -4,8 +4,23 @@
 
     
   <url>
+    <loc>http://www.xiaoyuxee.com/2016/04/27/understanding-classload/</loc>
+    <lastmod>2016-05-18T02:04:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>understanding classload</title>
+        <pubTime>2016-04-27T15:33:05.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.xiaoyuxee.com/2016/04/27/understanding-classloader/</loc>
-    <lastmod>2016-05-08T11:17:16.000Z</lastmod>
+    <lastmod>2016-05-09T18:12:28.000Z</lastmod>
     <data>
         <display>
         <title>Java中的ClassLoader</title>
