@@ -4,46 +4,6 @@
 
     
   <url>
-    <loc>http://www.xiaoyuxee.com/2016/04/27/understanding-classloader/</loc>
-    <lastmod>2016-05-09T18:12:28.000Z</lastmod>
-    <data>
-        <display>
-        <title>Java中的ClassLoader</title>
-        <pubTime>2016-04-27T15:33:05.000Z</pubTime>
-        
-        <tag>ClassLoader</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java-Core" url="http://www.xiaoyuxee.com/categories/Java-Core/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/05/01/port-of-tcp/</loc>
-    <lastmod>2016-05-01T04:52:50.000Z</lastmod>
-    <data>
-        <display>
-        <title>TCP中的端口号</title>
-        <pubTime>2016-04-30T18:23:27.000Z</pubTime>
-        
-        <tag>TCP/IP</tag>
-         
-         
-           
-             
-              <breadCrumb title="Network" url="http://www.xiaoyuxee.com/categories/Network/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.xiaoyuxee.com/2016/04/07/executor-in-java-concurrency/</loc>
     <lastmod>2016-04-30T06:56:39.000Z</lastmod>
     <data>
