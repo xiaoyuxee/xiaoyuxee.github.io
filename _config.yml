@@ -66,29 +66,10 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-plugins:
-- hexo-generator-cname
-- hexo-qiniu-sync
-
 theme: maupassant
 
-qiniu:
-	offline: false
-	sync: true
-	bucket: xiaoyuxee
-	access_key: 2zfX3YKfimMpDdTPA97xx1zhpPiW1743Ky8776fk
-	secret_key: 2BFfFXjNI1XWLaZ-RHMpvGiH-n2vfwDfn23yaKj_
-	dirPrefix: static
-	urlPrefix: http://7xqspb.com1.z0.glb.clouddn.com/static
-	local_dir: static
-	update_exist: true
-	image:
-		folder: images
-		extend: ?imageView2/2/w/600
-	js:
-		folder: js
-	css:
-		folder: css
+plugins:
+- hexo-generator-cname
 
 sitemap: 
 baidusitemap: 
