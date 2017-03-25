@@ -4,7 +4,7 @@
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.xiaoyuxee.com/"/>
-  <updated>2017-03-25T18:13:40.000Z</updated>
+  <updated>2017-03-25T18:29:27.000Z</updated>
   <id>http://www.xiaoyuxee.com/</id>
   
   <author>
@@ -16,10 +16,10 @@
   
   <entry>
     <title><![CDATA[世界你好]]></title>
-    <link href="http://www.xiaoyuxee.com/2017/03/02/hello-world/"/>
-    <id>http://www.xiaoyuxee.com/2017/03/02/hello-world/</id>
-    <published>2017-03-01T16:40:16.000Z</published>
-    <updated>2017-03-25T18:13:40.000Z</updated>
+    <link href="http://www.xiaoyuxee.com/2017/03/26/hello-world/"/>
+    <id>http://www.xiaoyuxee.com/2017/03/26/hello-world/</id>
+    <published>2017-03-25T18:27:44.000Z</published>
+    <updated>2017-03-25T18:29:27.000Z</updated>
     <content type="html"><![CDATA[<p>世界，你好。</p>
 ]]></content>
     <summary type="html">
