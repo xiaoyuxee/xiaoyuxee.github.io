@@ -2,83 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.xiaoyuxee.com/2016/04/07/executor-in-java-concurrency/</loc>
-    <lastmod>2016-04-30T06:56:39.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/31/synchronizer-in-java-concurrency/</loc>
-    <lastmod>2016-04-30T06:46:05.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/15/synchronization-in-java-concurrency/</loc>
-    <lastmod>2016-04-30T06:45:58.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/16/liveness-in-java-concurrency/</loc>
-    <lastmod>2016-04-30T06:45:25.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/15/base-in-java-concurrency/</loc>
-    <lastmod>2016-04-30T06:44:59.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/13/in-depth-understanding-of-channel-in-nio/</loc>
-    <lastmod>2016-04-16T07:25:53.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/02/15/basic-IO-in-java/</loc>
-    <lastmod>2016-03-14T15:40:58.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/03/11/nio-in-java/</loc>
-    <lastmod>2016-03-14T15:21:01.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/01/16/config-diapatcher-servlet-with-servlet3.0/</loc>
-    <lastmod>2016-02-08T02:33:48.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/02/05/lambda-in-java8/</loc>
-    <lastmod>2016-02-08T02:30:34.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/01/30/wiring-beans-in-spring/</loc>
-    <lastmod>2016-02-08T02:28:37.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/01/24/database-access-in-java/</loc>
-    <lastmod>2016-02-08T01:56:38.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/02/06/aggregate-operation-in-java8/</loc>
-    <lastmod>2016-02-06T19:45:54.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/01/17/coding-effectively-with-eclipse-on-mac/</loc>
-    <lastmod>2016-01-24T13:14:35.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/01/11/my-2015/</loc>
-    <lastmod>2016-01-12T16:15:49.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoyuxee.com/2016/01/10/hello-world/</loc>
-    <lastmod>2016-01-10T16:25:29.000Z</lastmod>
+    <loc>http://www.xiaoyuxee.com/2017/03/02/hello-world/</loc>
+    <lastmod>2017-03-25T18:13:40.000Z</lastmod>
   </url>
   
 </urlset>
