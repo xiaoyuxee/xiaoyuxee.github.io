@@ -4,7 +4,7 @@
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.xiaoyuxee.com/"/>
-  <updated>2017-04-04T17:26:11.000Z</updated>
+  <updated>2017-04-05T17:06:53.000Z</updated>
   <id>http://www.xiaoyuxee.com/</id>
   
   <author>
@@ -15,18 +15,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[学习]]></title>
+    <link href="http://www.xiaoyuxee.com/2017/04/05/leanning/"/>
+    <id>http://www.xiaoyuxee.com/2017/04/05/leanning/</id>
+    <published>2017-04-04T16:30:48.000Z</published>
+    <updated>2017-04-05T17:06:53.000Z</updated>
+    <content type="html"><![CDATA[<p>什么是学习，学习指的是学习些什么东西。</p>
+<blockquote><p>只是一味地获取信息或知识并不是真的在学习，学习指的是渴望去理解以及因喜爱而去做某件事。</p>
+<footer><strong>克里希那穆提</strong><cite>生命之书：365天的静心冥想</cite></footer></blockquote>
+<a id="more"></a>
+<p>昨天看到克里希那穆提在《生命之书：365天的静心冥想》中说到学习这个话题，里面说到，学习就是学习新的知识，而不是简单的重复。其实这个观点跟<code>逃离舒适区</code>、<code>刻意练习</code>大相径庭，强调的都是“<strong>辞旧迎新</strong>”。</p>
+<p>仔细想想工作后的这五年，到底学到了些什么，又有多少次离开过舒适区勇敢的去尝试新的东西。虽曾不断地去拼搏、去努力、去追求所谓的自己想要的东西，到现在却发现除了那些表面上可以炫耀的东西以外好像什么没有什么了。如果你什么都没有学到的话，你是不敢离开这个呆了几年已慢慢熟悉的舒适区的，时间久了也就成了恶性循环，你也就失去了最初的求生欲和战斗力。</p>
+<p><strong>那么，下一个方向你准备开往哪里。</strong></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>什么是学习，学习指的是学习些什么东西。</p>
+<blockquote><p>只是一味地获取信息或知识并不是真的在学习，学习指的是渴望去理解以及因喜爱而去做某件事。</p>
+<footer><strong>克里希那穆提</strong><cite>生命之书：365天的静心冥想</cite></footer></blockquote>]]>
+    
+    </summary>
+    
+      <category term="每日思考" scheme="http://www.xiaoyuxee.com/tags/%E6%AF%8F%E6%97%A5%E6%80%9D%E8%80%83/"/>
+    
+      <category term="随笔" scheme="http://www.xiaoyuxee.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[启程]]></title>
     <link href="http://www.xiaoyuxee.com/2017/04/04/set-out/"/>
     <id>http://www.xiaoyuxee.com/2017/04/04/set-out/</id>
     <published>2017-04-04T15:53:38.000Z</published>
-    <updated>2017-04-04T17:26:11.000Z</updated>
+    <updated>2017-04-05T17:07:43.000Z</updated>
     <content type="html"><![CDATA[<p>说了很多次要写点什么了，但是迟迟没有动笔。</p>
-<a id="more"></a>
 <p>今天算是动笔了吧。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>说了很多次要写点什么了，但是迟迟没有动笔。</p>]]>
-    
+    <![CDATA[<p>说了很多次要写点什么了，但是迟迟没有动笔。</p>
+<p>今天算是动笔了吧。</p>
+]]>
     </summary>
     
   </entry>
