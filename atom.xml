@@ -4,7 +4,7 @@
   <subtitle><![CDATA[假装是个程序员]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.xiaoyuxee.com/"/>
-  <updated>2017-04-07T00:59:45.000Z</updated>
+  <updated>2017-04-09T09:53:19.000Z</updated>
   <id>http://www.xiaoyuxee.com/</id>
   
   <author>
@@ -15,12 +15,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[选择]]></title>
+    <link href="http://www.xiaoyuxee.com/2017/04/07/choice/"/>
+    <id>http://www.xiaoyuxee.com/2017/04/07/choice/</id>
+    <published>2017-04-07T08:44:37.000Z</published>
+    <updated>2017-04-09T09:53:19.000Z</updated>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote><p>未来迷人绚烂总在向我召唤<br>哪怕只有痛苦作伴也要勇往直前<br>我想在那里最蓝的大海扬帆<br>绝不管自己能不能回还</p>
+<footer><strong>GALA</strong><cite>追梦赤子心</cite></footer></blockquote>
+<a id="more"></a>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=355992&auto=0&height=32"></iframe>
+
+<p>你想要的生活是什么样子的？商业精英、工匠大师、官场政客还是采菊东篱下的隐士。每一种身份背后都有值得追求的东西与光环，而每一种人生的选择就意味着对其他人生的放弃。</p>
+<p>选择是放弃了的最大成本，那放弃什么会让你 <strong>遗憾终身呢</strong>？</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote><p>未来迷人绚烂总在向我召唤<br>哪怕只有痛苦作伴也要勇往直前<br>我想在那里最蓝的大海扬帆<br>绝不管自己能不能回还</p>
+<footer><strong>GALA</strong><cite>追梦赤子心</cite></footer></blockquote>]]>
+    
+    </summary>
+    
+      <category term="每日思考" scheme="http://www.xiaoyuxee.com/tags/%E6%AF%8F%E6%97%A5%E6%80%9D%E8%80%83/"/>
+    
+      <category term="随笔" scheme="http://www.xiaoyuxee.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[图表]]></title>
     <link href="http://www.xiaoyuxee.com/2017/04/06/chart/"/>
     <id>http://www.xiaoyuxee.com/2017/04/06/chart/</id>
     <published>2017-04-06T13:18:05.000Z</published>
-    <updated>2017-04-07T00:59:45.000Z</updated>
-    <content type="html"><![CDATA[<p>今天看到同事的周报中有段关于某解决方案的描述，读完后感觉苍白无力，大脑使劲在拼凑一个画面：实体的关联、数据的流转以及业务上的约束。于是就想到了《学习之道》中关于记忆的一些描述，大概是说<strong>最容易记住的是那些之间有关联的东西</strong>，也就是说，<strong>你拿着两个有“关系”东西呈现给大脑，那么它们更容易被大脑接受，更容易给大脑留下深刻的印象</strong>。</p>
+    <updated>2017-04-09T08:51:48.000Z</updated>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>今天看到同事的周报中有段关于某解决方案的描述，读完后感觉苍白无力，大脑使劲在拼凑一个画面：实体的关联、数据的流转以及业务上的约束。于是就想到了《学习之道》中关于记忆的一些描述，大概是说<strong>最容易记住的是那些之间有关联的东西</strong>，也就是说，<strong>你拿着两个有“关系”东西呈现给大脑，那么它们更容易被大脑接受，更容易给大脑留下深刻的印象</strong>。</p>
 <p>利用这个常识可以做的事情有很多，比如<strong>记笔记</strong>、<strong>陈述方案</strong>等。一旦你把图表呈现给别人看时，其实就是在强迫别人在潜意识里接收你的灌输。</p>
 <p>搜集了一下有关关联的主要方法：联想、缩写、分组、链接（串词）、位置关联、定桩。</p>
 <p>说到底，其实还是脑洞脑洞大开，有想象力。</p>
@@ -29,10 +55,9 @@
 <li><a href="https://zh.wikipedia.org/wiki/%E5%BF%83%E6%99%BA%E5%9B%BE" target="_blank" rel="external">心智图 - 维基百科，自由的百科全书</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/%E5%9C%96%E5%83%8F%E5%BC%8F%E6%80%9D%E8%80%83%E8%BC%94%E5%8A%A9%E5%B7%A5%E5%85%B7" target="_blank" rel="external">圖像式思考輔助工具 - 维基百科，自由的百科全书</a></li>
 </ul>
-<p>#每日思考</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>今天看到同事的周报中有段关于某解决方案的描述，读完后感觉苍白无力，大脑使劲在拼凑一个画面：实体的关联、数据的流转以及业务上的约束。于是就想到了《学习之道》中关于记忆的一些描述，大概是说<strong>最容易记住的是那些之间有关联的东西</strong>，也就是说，<stro]]>
+    <![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>今天看到同事的周报中有段关于某解决方案的描述，读完后感觉苍白无力，大脑使劲]]>
     </summary>
     
       <category term="每日思考" scheme="http://www.xiaoyuxee.com/tags/%E6%AF%8F%E6%97%A5%E6%80%9D%E8%80%83/"/>
@@ -47,7 +72,7 @@
     <id>http://www.xiaoyuxee.com/2017/04/05/leanning/</id>
     <published>2017-04-04T16:30:48.000Z</published>
     <updated>2017-04-05T17:06:53.000Z</updated>
-    <content type="html"><![CDATA[<p>什么是学习，学习指的是学习些什么东西。</p>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>什么是学习，学习指的是学习些什么东西。</p>
 <blockquote><p>只是一味地获取信息或知识并不是真的在学习，学习指的是渴望去理解以及因喜爱而去做某件事。</p>
 <footer><strong>克里希那穆提</strong><cite>生命之书：365天的静心冥想</cite></footer></blockquote>
 <a id="more"></a>
@@ -74,13 +99,12 @@
     <id>http://www.xiaoyuxee.com/2017/04/04/set-out/</id>
     <published>2017-04-04T15:53:38.000Z</published>
     <updated>2017-04-05T17:07:43.000Z</updated>
-    <content type="html"><![CDATA[<p>说了很多次要写点什么了，但是迟迟没有动笔。</p>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>说了很多次要写点什么了，但是迟迟没有动笔。</p>
 <p>今天算是动笔了吧。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>说了很多次要写点什么了，但是迟迟没有动笔。</p>
-<p>今天算是动笔了吧。</p>
-]]>
+    <![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>说了很多次要写点什么了，但是迟迟没有动笔。</p>
+<p>今天算是动笔了吧]]>
     </summary>
     
   </entry>
